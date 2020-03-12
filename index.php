@@ -206,68 +206,47 @@
 
 
 
-
-<!-- Footer -->
-<!-- <footer class="navbar container-fluid">
-  <div class="row">
-    <p> QUINTET </p>
-    <p> Mithala Road, Tinkune </p>
-    <p> Kathmandu, Nepal </p>
-  </div>
-  <a href="#"><i class="fa fa-facebook-official"></i></a>
-  <a href="#"><i class="fa fa-pinterest-p"></i></a>
-  <a href="#"><i class="fa fa-twitter"></i></a>
-  <a href="#"><i class="fa fa-flickr"></i></a>
-  <a href="#"><i class="fa fa-linkedin"></i></a>
-</footer>
- -->
-
  <footer class="footer-distributed">
  
       <div class="footer-left">
-          <img src="img/logo.jpg">
-        <h3>About<span>QUINTET</span></h3>
+          <img src="img/quintet-logo.png">
  
         <p class="footer-links">
           <a href="#">Home</a>
           |
-          <a href="#">Blog</a>
-          |
-          <a href="#">About</a>
+          <a href="#">Bookstore</a>
           |
           <a href="#">Contact</a>
         </p>
  
-        <p class="footer-company-name">© 2019 Eduonix Learning Solutions Pvt. Ltd.</p>
+        <p class="footer-company-name">© 2020 Quintet Bookstore Pvt. Ltd.</p>
       </div>
  
       <div class="footer-center">
         <div>
           <i class="fa fa-map-marker"></i>
-            <p><span>309 - Rupa Solitaire,
-             Bldg. No. A - 1, Sector - 1</span>
-            Mahape, Navi Mumbai - 400710</p>
+            <p><span>Mithala Chwok, Tinkune</span>
+            Kathmandu, Nepal</p>
         </div>
  
         <div>
           <i class="fa fa-phone"></i>
-          <p>+91 22-27782183</p>
+          <p>+977 9849019990</p>
         </div>
         <div>
           <i class="fa fa-envelope"></i>
-          <p><a href="mailto:support@eduonix.com">support@eduonix.com</a></p>
+          <p><!-- <a href="mailto:info@quintet.com"> -->info@quintet.com</a></p>
         </div>
       </div>
       <div class="footer-right">
-        <p class="footer-company-about">
-          <span>About the company</span>
-          We offer training and skill building courses across Technology, Design, Management, Science and Humanities.</p>
+        <h4 style="color:#fff;">About the company</h4>
+          <p>We offer varrieties of books at your doorstep. We are the top books seller of Nepal with huge categories of books</p>
         <div class="footer-icons">
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-instagram"></i></a>
-          <a href="#"><i class="fa fa-linkedin"></i></a>
-          <a href="#"><i class="fa fa-youtube"></i></a>
+           <a href="#"><i class="fa fa-facebook-official"></i></a>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-flickr"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
         </div>
       </div>
     </footer>

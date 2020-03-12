@@ -241,14 +241,14 @@ footer{
  
 .footer-distributed h3{
   color:  #ffffff;
-  font: normal 36px 'Cookie', cursive;
+  font: normal 36px 'Roboto';
   margin: 0;
 }
  
 /* The company logo */
  
 .footer-distributed .footer-left img{
-  width: 30%;
+  width: 58%;
 }
  
 .footer-distributed h3 span{
@@ -315,51 +315,53 @@ footer{
   line-height:2;
 }
  
-.footer-distributed .footer-center p a{
+/*.footer-distributed .footer-center p a{
   color:  #e0ac1c;
   text-decoration: none;;
-}
+}*/
  
  
 /* Footer Right */
  
 .footer-distributed .footer-right{
   width: 30%;
-}
- 
-.footer-distributed .footer-company-about{
   line-height: 20px;
   color:  #92999f;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: normal;
   margin: 0;
+
 }
  
-.footer-distributed .footer-company-about span{
-  display: block;
-  color:  #ffffff;
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
- 
-.footer-distributed .footer-icons{
-  margin-top: 25px;
-}
  
 .footer-distributed .footer-icons a{
   display: inline-block;
   width: 35px;
   height: 35px;
   cursor: pointer;
-  background-color:  #33383b;
-  border-radius: 2px;
+  background-color:  #0E345A;
  
-  font-size: 20px;
+  font-size: 30px;
   color: #ffffff;
-  text-align: center;
-  line-height: 35px;
- 
-  margin-right: 3px;
-  margin-bottom: 5px;
+  text-align: center; 
+  margin-right: 5px;
+  margin-top: 25px;
+}
+
+
+@media (max-width: 880px) {
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-center,
+  .footer-distributed .footer-right{
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .footer-distributed .footer-center i{
+    margin-left: 0;
+  }
+
 }
