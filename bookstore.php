@@ -4,14 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/w3css/3/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
- 
-  <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
-
 <link href="css/my.css" rel="stylesheet">
-
-
 
 <body>
 <!-- Navigation -->
@@ -21,8 +14,8 @@
 
 	<input type="text" placeholder="Search.." style="width: 50%;"> 
 		<div class="navbar-right">
-		  <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
-		  <a href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
+		  <a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
+		  <a class="active" href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
 		  <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
 		  <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
 		</div>
@@ -34,6 +27,7 @@
           </div> -->
 
 <!-- Slide Show -->
+<h1> This is booktore</h1>
 <section>
   <img class="mySlides" src="img/carousel/1.jpg"
   style="width:100%">
@@ -208,75 +202,14 @@
 
 
 <!-- Footer -->
-<!-- <footer class="navbar container-fluid">
-  <div class="row">
-    <p> QUINTET </p>
-    <p> Mithala Road, Tinkune </p>
-    <p> Kathmandu, Nepal </p>
-  </div>
+<footer class="navbar container-fluid">
+  <div class="">
   <a href="#"><i class="fa fa-facebook-official"></i></a>
   <a href="#"><i class="fa fa-pinterest-p"></i></a>
   <a href="#"><i class="fa fa-twitter"></i></a>
   <a href="#"><i class="fa fa-flickr"></i></a>
   <a href="#"><i class="fa fa-linkedin"></i></a>
 </footer>
- -->
-
- <footer class="footer-distributed">
- 
-      <div class="footer-left">
-          <img src="img/logo.jpg">
-        <h3>About<span>QUINTET</span></h3>
- 
-        <p class="footer-links">
-          <a href="#">Home</a>
-          |
-          <a href="#">Blog</a>
-          |
-          <a href="#">About</a>
-          |
-          <a href="#">Contact</a>
-        </p>
- 
-        <p class="footer-company-name">© 2019 Eduonix Learning Solutions Pvt. Ltd.</p>
-      </div>
- 
-      <div class="footer-center">
-        <div>
-          <i class="fa fa-map-marker"></i>
-            <p><span>309 - Rupa Solitaire,
-             Bldg. No. A - 1, Sector - 1</span>
-            Mahape, Navi Mumbai - 400710</p>
-        </div>
- 
-        <div>
-          <i class="fa fa-phone"></i>
-          <p>+91 22-27782183</p>
-        </div>
-        <div>
-          <i class="fa fa-envelope"></i>
-          <p><a href="mailto:support@eduonix.com">support@eduonix.com</a></p>
-        </div>
-      </div>
-      <div class="footer-right">
-        <p class="footer-company-about">
-          <span>About the company</span>
-          We offer training and skill building courses across Technology, Design, Management, Science and Humanities.</p>
-        <div class="footer-icons">
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-instagram"></i></a>
-          <a href="#"><i class="fa fa-linkedin"></i></a>
-          <a href="#"><i class="fa fa-youtube"></i></a>
-        </div>
-      </div>
-    </footer>
-
-
-
-
-
-
 
 <script>
 // Automatic Slideshow - change image every 3 seconds
