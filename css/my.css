@@ -132,14 +132,19 @@ a:hover {
   clear: both;
 }
 /*Slidebar left column*/
+.row1{
+  display: flex;
+  flex-direction: row;
+}
+
 .side{
-  flex: 30%;
+  flex: 20%;
   background-color: #f1f1f1;
   padding: 20px;
 }
 
 .main{
-  flex: 70%;
+  flex: 80%;
   background-color: white;
   padding: 20px;
 }
@@ -156,7 +161,7 @@ a:hover {
     float: left;
     margin-bottom: 0px;
     /*padding: 0 2px;*/
-    flex: 1;
+    flex: 0;
     /*display: none;*/
 
   }
@@ -176,11 +181,40 @@ a:hover {
     /*margin-right: auto;*/
     padding: 5px;
     /*display: flex;*/
-
-
     /*padding: -500px;*/
-    
+    overflow: hidden;
+  }
 
+  .grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+/*.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;*/
+}
+
+  .cardbook{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 0px;
+    /*height: auto;*/
+    /*max-height: 250px;*/
+    height: 100%;
+    width: 30%;
+    /*object-fit: cover;*/
+    display: block;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    padding: 5px;
+    /*display: flex;*/
+    /*padding: -500px;*/
     overflow: hidden;
   }
   .container{

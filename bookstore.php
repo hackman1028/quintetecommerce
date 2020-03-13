@@ -26,9 +26,9 @@
               </form>
           </div> -->
 
-<div class="row" id="header">
+        <div class="row1" id="header">
           <div class="side">
-              <div class="col-md-3 col-lg-3" id="category">
+              <!-- <div class="col-md-3 col-lg-3" id="category"> -->
                   <div style="background:#D67B22;color:#fff;font-weight:800;border:none;padding:15px;"> The Book Shop </div>
                   <ul>
                       <li> <a href="Product.php?value=entrance%20exam"> Entrance Exam </a> </li>
@@ -42,19 +42,17 @@
 
                   </ul>
               </div>
-            </div>
-          </div>
+            <!-- </div> -->
+          <!-- </div> -->
 
 
 <!-- Book section -->
-<div class="main">
+<div class="main" >
+  <div class="header">
   <h2>RECENTLY ADDED</h2>
 </div>
-
-<!-- Book Description -->
-<div class="row">
-  <div class="column">
-    <div class="card">
+  <div class="column" >
+    <div class="cardbook" >
       <img src="img/books/book1.jpg" alt="1" style="width:100%">
     </div>
       <div class="container">
@@ -66,7 +64,7 @@
   </div>
 
   <div class="column">
-    <div class="card">
+    <div class="cardbook">
       <img src="img/books/book2.jpg" alt="2" style="width:100%">
     </div>
       <div class="container">
@@ -78,7 +76,7 @@
   </div>
 
   <div class="column">
-    <div class="card">
+    <div class="cardbook">
       <img src="img/books/book3.jpg" alt="3" style="width:100%">
     </div>
       <div class="container">
@@ -90,7 +88,7 @@
   </div>
 
   <div class="column">
-    <div class="card">
+    <div class="cardbook">
       <img src="img/books/book4.jpg" alt="4" style="width:100%">
     </div>
       <div class="container">
@@ -102,7 +100,7 @@
   </div>
 
   <div class="column">
-    <div class="card">
+    <div class="cardbook">
       <img src="img/books/book5.jpg" alt="5" style="width:100%">
     </div>
       <div class="container">
@@ -114,7 +112,7 @@
   </div>
 
   <div class="column">
-    <div class="card">
+    <div class="cardbook">
       <img src="img/books/book6.jpg" alt="6" style="width:100%">
     </div>
       <div class="container">
@@ -124,6 +122,7 @@
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
       </div>    
   </div>
+</div>
 </div>
 
 

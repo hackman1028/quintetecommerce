@@ -62,6 +62,8 @@
       </div>    
   </div>
 
+  
+
   <div class="column">
     <div class="card">
       <img src="img/books/book2.jpg" alt="2" style="width:100%">
