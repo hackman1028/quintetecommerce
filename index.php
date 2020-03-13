@@ -17,17 +17,17 @@
 <!-- Navigation -->
 
 <div class="navbar topnav">
-	<a class="logo" href="#"><strong>QUINTET</strong></a>
+  <a class="logo" href="#"><strong>QUINTET</strong></a>
 
-	<input type="text" placeholder="Search.." style="width: 50%;"> 
-		<div class="navbar-right">
-		  <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
-		  <a href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
-		  <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
-		  <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
-		</div>
+  <input type="text" placeholder="Search.." style="width: 50%;"> 
+    <div class="navbar-right">
+      <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
+      <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
+      <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+    </div>
 </div>
- 	<!-- 	<div id="searchbox1" >
+  <!--  <div id="searchbox1" >
               <form class="navbar-form navbar-left" role="search" method="POST" action="Result.php">
                   <input type="text" class="form-control" name="keyword" style="width:250%; margin-left: 20%" placeholder="Search for a Book, Author or Category">
               </form>
@@ -50,77 +50,77 @@
 
 <!-- Book Description -->
 <div class="row">
-	<div class="column">
-		<div class="card">
-			<img src="img/books/book1.jpg" alt="1" style="width:100%">
-		</div>
-			<div class="container">
-				<h2> 1 book </h2>
-				<p class="title">Summer Love</p>
-				<p> Rs. 200 </p>
-				<p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-			</div>		
-	</div>
+  <div class="column">
+    <div class="card">
+      <img src="img/books/book1.jpg" alt="1" style="width:100%">
+    </div>
+      <div class="container">
+        <h2> 1 book </h2>
+        <p class="title">Summer Love</p>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div>    
+  </div>
 
-	<div class="column">
-		<div class="card">
-			<img src="img/books/book2.jpg" alt="2" style="width:100%">
-		</div>
-			<div class="container">
-				<h2> 2 book </h2>
-				<p class="title">Summer Love</p>
-				<p> Rs. 200 </p>
-				<p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-			</div>		
-	</div>
+  <div class="column">
+    <div class="card">
+      <img src="img/books/book2.jpg" alt="2" style="width:100%">
+    </div>
+      <div class="container">
+        <h2> 2 book </h2>
+        <p class="title">Summer Love</p>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div>    
+  </div>
 
-	<div class="column">
-		<div class="card">
-			<img src="img/books/book3.jpg" alt="3" style="width:100%">
-		</div>
-			<div class="container">
-				<h2> 3 book </h2>
-				<p class="title">Summer Love</p>
-				<p> Rs. 200 </p>
-				<p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-			</div>		
-	</div>
+  <div class="column">
+    <div class="card">
+      <img src="img/books/book3.jpg" alt="3" style="width:100%">
+    </div>
+      <div class="container">
+        <h2> 3 book </h2>
+        <p class="title">Summer Love</p>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div>    
+  </div>
 
-	<div class="column">
-		<div class="card">
-			<img src="img/books/book4.jpg" alt="4" style="width:100%">
-		</div>
-			<div class="container">
-				<h2> 4 book </h2>
-				<p class="title">Summer Love</p>
-				<p> Rs. 200 </p>
-				<p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-			</div>		
-	</div>
+  <div class="column">
+    <div class="card">
+      <img src="img/books/book4.jpg" alt="4" style="width:100%">
+    </div>
+      <div class="container">
+        <h2> 4 book </h2>
+        <p class="title">Summer Love</p>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div>    
+  </div>
 
-	<div class="column">
-		<div class="card">
-			<img src="img/books/book5.jpg" alt="5" style="width:100%">
-		</div>
-			<div class="container">
-				<h2> 5 book </h2>
-				<p class="title">Summer Love</p>
-				<p> Rs. 200 </p>
-				<p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-			</div>		
-	</div>
+  <div class="column">
+    <div class="card">
+      <img src="img/books/book5.jpg" alt="5" style="width:100%">
+    </div>
+      <div class="container">
+        <h2> 5 book </h2>
+        <p class="title">Summer Love</p>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div>    
+  </div>
 
-	<div class="column">
-		<div class="card">
-			<img src="img/books/book6.jpg" alt="6" style="width:100%">
-		</div>
-			<div class="container">
-				<h2> 6 book </h2>
-				<p class="title">Summer Love</p>
-				<p> Rs. 200 </p>
-				<p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-			</div>		
-	</div>
+  <div class="column">
+    <div class="card">
+      <img src="img/books/book6.jpg" alt="6" style="width:100%">
+    </div>
+      <div class="container">
+        <h2> 6 book </h2>
+        <p class="title">Summer Love</p>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div>    
+  </div>
 </div>
 
 
@@ -206,68 +206,47 @@
 
 
 
-
-<!-- Footer -->
-<!-- <footer class="navbar container-fluid">
-  <div class="row">
-    <p> QUINTET </p>
-    <p> Mithala Road, Tinkune </p>
-    <p> Kathmandu, Nepal </p>
-  </div>
-  <a href="#"><i class="fa fa-facebook-official"></i></a>
-  <a href="#"><i class="fa fa-pinterest-p"></i></a>
-  <a href="#"><i class="fa fa-twitter"></i></a>
-  <a href="#"><i class="fa fa-flickr"></i></a>
-  <a href="#"><i class="fa fa-linkedin"></i></a>
-</footer>
- -->
-
  <footer class="footer-distributed">
  
       <div class="footer-left">
-          <img src="img/logo.jpg">
-        <h3>About<span>QUINTET</span></h3>
+          <img src="img/quintet-logo.png">
  
         <p class="footer-links">
           <a href="#">Home</a>
           |
-          <a href="#">Blog</a>
-          |
-          <a href="#">About</a>
+          <a href="#">Bookstore</a>
           |
           <a href="#">Contact</a>
         </p>
  
-        <p class="footer-company-name">© 2019 Eduonix Learning Solutions Pvt. Ltd.</p>
+        <p class="footer-company-name">© 2020 Quintet Bookstore Pvt. Ltd.</p>
       </div>
  
       <div class="footer-center">
         <div>
           <i class="fa fa-map-marker"></i>
-            <p><span>309 - Rupa Solitaire,
-             Bldg. No. A - 1, Sector - 1</span>
-            Mahape, Navi Mumbai - 400710</p>
+            <p><span>Mithala Chwok, Tinkune</span>
+            Kathmandu, Nepal</p>
         </div>
  
         <div>
           <i class="fa fa-phone"></i>
-          <p>+91 22-27782183</p>
+          <p>+977 9849019990</p>
         </div>
         <div>
           <i class="fa fa-envelope"></i>
-          <p><a href="mailto:support@eduonix.com">support@eduonix.com</a></p>
+          <p><!-- <a href="mailto:info@quintet.com"> -->info@quintet.com</a></p>
         </div>
       </div>
       <div class="footer-right">
-        <p class="footer-company-about">
-          <span>About the company</span>
-          We offer training and skill building courses across Technology, Design, Management, Science and Humanities.</p>
+        <h4 style="color:#fff;">About the company</h4>
+          <p>We offer varrieties of books at your doorstep. We are the top books seller of Nepal with huge categories of books</p>
         <div class="footer-icons">
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-instagram"></i></a>
-          <a href="#"><i class="fa fa-linkedin"></i></a>
-          <a href="#"><i class="fa fa-youtube"></i></a>
+           <a href="#"><i class="fa fa-facebook-official"></i></a>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-flickr"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
         </div>
       </div>
     </footer>
