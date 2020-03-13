@@ -49,7 +49,8 @@
 </div>
 
 <!-- Book Description -->
-<div class="row">
+<div class="container-fluid">
+<div class="row" >
   <div class="column">
     <div class="card">
       <img src="img/books/book1.jpg" alt="1" style="width:100%">
@@ -124,7 +125,7 @@
       </div>    
   </div>
 </div>
-
+</div>
 
 <!-- Book section -->
 <div class="header">
@@ -132,6 +133,7 @@
 </div>
 
 <!-- Book Description -->
+<div class="container-fluid">
 <div class="row">
   <div class="column">
     <div class="card">
@@ -204,6 +206,7 @@
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
       </div>    
   </div>
+</div>
 </div>
 
 

@@ -85,7 +85,6 @@ body {
   overflow: auto;
   color: white;
   /*height: 5%;*/
-
   }
 
 
@@ -93,16 +92,16 @@ body {
 
 /* Column Conatiner*/
 .row {
-  margin: 10px 50px;
+  /*margin: 10px 50px;*/
   display: flex;
   flex-wrap: wrap;
  
 }
 
 /* Add padding BETWEEN each column */
-.row, .row > .column {
+/*.row, .row > .column {
   padding: 10px;
-}
+}*/
 
 /* Clear floats after rows */ 
 .row:after {
@@ -110,27 +109,39 @@ body {
   display: flex;
   clear: both;
 }
-/*Slidebar left column*/
-.row1{
-  display: flex;
-  flex-direction: row;
-}
 
 .side{
-  flex: 20%;
+  flex: 25%;
   background-color: #f1f1f1;
   padding: 20px;
 }
 
 .main{
-  flex: 80%;
+  flex: 75%;
   background-color: white;
   padding: 20px;
+
+  display: flex;
+  flex-wrap: wrap;
 }
 
+.main:after {
+  content: "";
+  display: flex;
+  clear: both;
+}
+
+.main .column{
+  width: 28%;
+  padding: 20px;
+  margin: 20px;
+  position: static;
+  /*box-sizing: border-box;*/
+}
 .container-fluid {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 50px;
+  padding-left:  50px;
+  margin: 15px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -142,6 +153,7 @@ body {
     /*flex: 1;*/
     height: 480px;
     width: 16.66%;
+    padding: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
   }
@@ -182,22 +194,7 @@ body {
   font-size: 30px;*/
 }
 
-  .cardbook{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin: 0px;
-    /*height: auto;*/
-    /*max-height: 250px;*/
-    height: 100%;
-    width: 30%;
-    /*object-fit: cover;*/
-    display: block;
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-    padding: 5px;
-    /*display: flex;*/
-    /*padding: -500px;*/
-    overflow: hidden;
-  }
+  
   .container-box{
     padding: 0 10px;
     
@@ -206,7 +203,6 @@ body {
     content:"";
     clear: both;
     display: table;
-
   }
 
   .title{
@@ -236,6 +232,55 @@ body {
     }
   }
 
+
+
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+  margin-bottom: 0;
+}
+
+
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #23527c;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+
+#category ul{
+  list-style-type:none;
+  overflow:hidden;
+  width:100%;
+  border:1px solid #ccc;
+  background: #fff;
+  border-bottom-right-radius:10px;
+  border-bottom-left-radius: 10px;
+}
+
+#category li {
+  display:block; 
+  font-weight:400; 
+  padding:10px; 
+  border-top: 1px solid #ccc;
+  margin-left:-40px; 
+}
 
   /* The footer is fixed to the bottom of the page */
  
