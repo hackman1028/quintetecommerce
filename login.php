@@ -23,7 +23,7 @@
         
     <button type="submit">Login</button>
 
-    <button type="button" id="signup_button" class="btn btn-lg" data-toggle="modal" data-target="signup.php">Sign Up</button>
+    <button type="button" id="signup_button" class="btn btn-lg" data-toggle="modal" data-target="signup.php"><a href="signup.php">Sign Up</a></button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
