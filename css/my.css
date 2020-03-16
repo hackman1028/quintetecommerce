@@ -447,8 +447,10 @@ footer{
 
 
 /*for login form*/
-/*
-form {border: 3px solid #f1f1f1;}
+
+form {
+  border: 3px solid #f1f1f1;
+}
 
 input[type=text], input[type=password] {
   width: 100%;
@@ -498,7 +500,7 @@ span.psw {
   padding-top: 16px;
 }
 
-/* Change styles for span and cancel button on extra small screens */
+ /*Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
      display: block;
@@ -508,4 +510,4 @@ span.psw {
      width: 100%;
   }
 }
-/*last of login form*/*/
+/*last of login form*/
