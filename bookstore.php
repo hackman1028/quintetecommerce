@@ -16,7 +16,7 @@
       <a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
       <a class="active" href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
       <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
-      <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+      <a href="login.php"><i class="fa fa-fw fa-user"></i> Login</a>
     </div>
 </div>
 

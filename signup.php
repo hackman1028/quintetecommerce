@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+<link href="css/my.css" rel="stylesheet">
 <style>
+
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
@@ -141,7 +143,7 @@ hr {
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn">Sign Up</button>
+        <button type="submit" class="signupbtn"><a href="signup.php">Sign Up</a></button>
       </div>
     </div>
   </form>
