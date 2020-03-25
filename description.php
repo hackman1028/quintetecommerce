@@ -6,9 +6,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link href="css/my.css" rel="stylesheet">
 
-<body>
 <!-- Navigation -->
-
 <div class="navbar">
   <a class="logo" href="#"><strong>QUINTET</strong></a>
   <input type="text" class="form-control" name="keyword" placeholder="Search for a Book, Author or Category" style="width: 50%;"> 
