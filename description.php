@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html>
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/w3css/3/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link href="css/my.css" rel="stylesheet">
-
-<!-- Navigation -->
-<div class="navbar">
-  <a class="logo" href="#"><strong>QUINTET</strong></a>
-  <input type="text" class="form-control" name="keyword" placeholder="Search for a Book, Author or Category" style="width: 50%;"> 
-    <div class="navbar-right">
-      <a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
-      <a class="active" href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
-      <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
-      <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
-    </div>
-</div>
-
-
-
 
 
 <style>  
@@ -33,9 +19,20 @@
         #service{background:#fff;padding:20px 10px;width:112%;margin-left:-6%;margin-right:-6%;}
         .glyphicon {color:#D67B22;}
     </style>
+  </head>
+<body>
+<!-- Navigation -->
 
-    
-
+<div class="navbar">
+  <a class="logo" href="#"><strong>QUINTET</strong></a>
+  <input type="text" class="form-control" name="keyword" placeholder="Search for a Book, Author or Category" style="width: 50%;"> 
+    <div class="navbar-right">
+      <a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a class="active" href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
+      <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
+      <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+    </div>
+</div>
 
 
   

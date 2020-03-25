@@ -1,3 +1,67 @@
+<?php
+session_start();
+include "dbconnect.php";
+
+if(isset($_GET['Message'])) {
+  print '<script type="text/javascript">
+  alert("'. $_GET['Message'] . '");
+  </script>';
+}
+
+if (isset($_GET['response'])){
+  print '<script type="text/javascript">
+  alert("'. $_GET['response'] . '");
+  </script>';
+}
+
+if (isset($_POST['submit']))
+{
+  if($_POST['submit']=="login")
+  {
+    $username=$_POST['login_username'];
+    $password=$_POST['login_password'];
+    $query = "SELECT * from users where UserName = '$username' AND Password='$password'";
+    $result = mysqli_query($con,$query)or die(mysql_error());
+    if(mysqli_num_rows($result) > 0)
+    {
+      $row = mysqli_fetch_assoc($result);
+      $_SESSION['user']=$row['UserName'];
+      print'
+      <script type="text/javascript">alert("sucessfully logged in!!");</script>
+      ';
+    }
+    else
+    {
+      print'
+      <script type="text/javascript">alert("Incorrect Username Or Password!!");</script>
+      ';
+    }
+  }
+  else if($_POST['submit']=="register")
+  {
+    $username=$_POST['register_username'];
+    $password=$_POST['register_password'];
+    $query="SELECT * from user where UserName = '$username'";
+    $result=mysqli_query($con,$query) or die(mysqli_error);
+    if(mysqli_num_row($result)>0)
+    {
+      print'
+      <script type="text/javascript">alert("username is taken");</script>';
+    }
+    else
+    {
+      $query="INSERT INTO users VALUES ('$username','$password')";
+      $result=mysqli_query($con,$query);
+      print'
+      <script type="text/javascript">
+      alert("Sucessfully Registered!!");
+      </script>';
+    }
+  }
+  }
+?>
+
+
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
