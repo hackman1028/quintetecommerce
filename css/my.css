@@ -155,6 +155,7 @@ body {
     width: 16.66%;
     padding: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+   
 
   }
 
@@ -167,7 +168,7 @@ body {
     /*max-height: 250px;*/
     height: 280px ;
     display: block;
-    overflow: hidden;
+
   }
 
 .container {
@@ -176,6 +177,7 @@ body {
   margin-right: auto;
   margin-left: auto;
   font-size: 14px;
+  overflow: hidden;
 }
 
   .grid-container {
@@ -448,7 +450,7 @@ footer{
 
 /*for login form*/
 
-form {border: 3px solid #f1f1f1;}
+form {border: 0px solid #f1f1f1;}
 
 input[type=text], input[type=password] {
   width: 100%;

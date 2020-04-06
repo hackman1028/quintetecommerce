@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['user']))
+  header("location: index.php?message=login to Continue");
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,18 +31,31 @@
 <!-- Navigation -->
 
 <div class="navbar">
-  <a class="logo" href="#"><strong>QUINTET</strong></a>
+  <a class="logo" href="index.php"><strong>QUINTET</strong></a>
   <input type="text" class="form-control" name="keyword" placeholder="Search for a Book, Author or Category" style="width: 50%;"> 
     <div class="navbar-right">
       <a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
       <a class="active" href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
-      <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
-      <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+      <a href="contact.php"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
+      <a href=login.php><i class="fa fa-fw fa-user"></i> Login</a>
     </div>
 </div>
 
 
   
+<?php
+    include "dbconnect.php";
+    $PID=$_GET['ID'];
+    $query = "SELECT * FROM products WHERE PID='$PID'";
+    $result = mysqli_query ($con,$query)or die(mysql_error());
+
+        if(mysqli_num_rows($result) > 0) 
+        {   
+            while($row = mysqli_fetch_assoc($result)) 
+            {
+            $path="img/books/".$row['PID'].".jpg";
+            $target="cart.php?ID=".$PID."&";
+echo '
   <div class="container-fluid" id="books">
     <div class="row">
       <div class="col-sm-10 col-md-6">
@@ -65,7 +85,9 @@ echo'                           <br><br><br>
       </div>
     </div>
           </div>
-<div class="container-fluid" id="description">
+     ';
+echo '
+          <div class="container-fluid" id="description">
     <div class="row">
       <h2> Description </h2> 
                         <p>'.$row['Description'] .'</p>
@@ -82,11 +104,13 @@ echo'                           <br><br><br>
                         </pre>
     </div>
   </div>
+';
 
             
-      </div>';
-
-
+            }
+        }
+    echo '</div>';
+    ?>  
 
 
 
@@ -145,6 +169,16 @@ echo'                           <br><br><br>
     </footer>
 
 
+
+<script>
+            $(function () {
+                var link = $('#buyLink').attr('href');
+                $('#buyLink').attr('href', link + 'quantity=' + $('#quantity option:selected').val());
+                $('#quantity').on('change', function () {
+                    $('#buyLink').attr('href', link + 'quantity=' + $('#quantity option:selected').val());
+                });
+            });
+    </script>
 </body>
 </html>
 

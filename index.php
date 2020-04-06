@@ -14,6 +14,7 @@ if (isset($_GET['response'])){
   </script>';
 }
 
+
 if (isset($_POST['submit']))
 {
   if($_POST['submit']=="login")
@@ -42,7 +43,7 @@ if (isset($_POST['submit']))
     $username=$_POST['register_username'];
     $password=$_POST['register_password'];
     $query="SELECT * from user where UserName = '$username'";
-    $result=mysqli_query($con,$query) or die(mysqli_error);
+    $result=mysqli_query($con,$query) or die(mysqli_error());
     if(mysqli_num_row($result)>0)
     {
       print'
@@ -59,6 +60,7 @@ if (isset($_POST['submit']))
     }
   }
   }
+
 ?>
 
 
@@ -80,10 +82,15 @@ if (isset($_POST['submit']))
 <body>
 <!-- Navigation -->
 
-<div class="navbar topnav">
-  <a class="logo" href="#"><strong>QUINTET</strong></a>
+<div class="navbar">
+  <a class="logo" href="index.php"><strong>QUINTET</strong></a>
 
-  <input type="text" placeholder="Search.." style="width: 50%;"> 
+<div id="searchbox">
+<form role="search" method="POST" action="Result.php" style="border: 0px;">
+  <input type="text" name="keyword" placeholder="Search.." style="width: 50%;">
+  </form>
+  </div> 
+
     <div class="navbar-right">
       <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
       <a href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
@@ -91,6 +98,16 @@ if (isset($_POST['submit']))
       <a href="login.php"><i class="fa fa-fw fa-user"></i> Login</a>
     </div>
 </div>
+
+<!-- 
+  <div id="top" >
+      <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;">
+          <div>
+              <form role="search" method="POST" action="Result.php">
+                  <input type="text" class="form-control" name="keyword" style="width:80%;margin:20px 10% 20px 10%;" placeholder="Search for a Book , Author Or Category">
+              </form>
+          </div>
+      </div> -->
   <!--  <div id="searchbox1" >
               <form class="navbar-form navbar-left" role="search" method="POST" action="Result.php">
                   <input type="text" class="form-control" name="keyword" style="width:250%; margin-left: 20%" placeholder="Search for a Book, Author or Category">
@@ -116,6 +133,7 @@ if (isset($_POST['submit']))
 <div class="container-fluid">
 <div class="row" >
   <div class="column">
+   <a href="description.php?ID=NEW-1&category=new">
     <div class="card">
       <img src="img/books/book1.jpg" alt="1" style="width:100%">
     </div>
@@ -124,12 +142,14 @@ if (isset($_POST['submit']))
         <p class="title">Summer Love</p>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
+      </div> 
+      </a>   
   </div>
 
   
 
   <div class="column">
+    <a href="description.php?ID=NEW-2&category=new">
     <div class="card">
       <img src="img/books/book2.jpg" alt="2" style="width:100%">
     </div>
@@ -138,10 +158,12 @@ if (isset($_POST['submit']))
         <p class="title">Summer Love</p>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
+      </div>
+      </a>    
   </div>
 
   <div class="column">
+  <a href="description.php?ID=NEW-3&category=new">
     <div class="card">
       <img src="img/books/book3.jpg" alt="3" style="width:100%">
     </div>
@@ -150,10 +172,12 @@ if (isset($_POST['submit']))
         <p class="title">Summer Love</p>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
+      </div>
+      </a>    
   </div>
 
   <div class="column">
+  <a href="description.php?ID=NEW-4&category=new">    
     <div class="card">
       <img src="img/books/book4.jpg" alt="4" style="width:100%">
     </div>
@@ -162,10 +186,12 @@ if (isset($_POST['submit']))
         <p class="title">Summer Love</p>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
+      </div>
+      </a>    
   </div>
 
   <div class="column">
+   <a href="description.php?ID=ENT-1&category=new">   
     <div class="card">
       <img src="img/books/book5.jpg" alt="5" style="width:100%">
     </div>
@@ -174,10 +200,12 @@ if (isset($_POST['submit']))
         <p class="title">Summer Love</p>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
+      </div>
+      </a>    
   </div>
 
   <div class="column">
+  <a href="description.php?ID=ENT-2&category=new">
     <div class="card">
       <img src="img/books/book6.jpg" alt="6" style="width:100%">
     </div>
@@ -186,7 +214,8 @@ if (isset($_POST['submit']))
         <p class="title">Summer Love</p>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
+      </div>
+      </a>    
   </div>
 </div>
 </div>
@@ -200,6 +229,7 @@ if (isset($_POST['submit']))
 <div class="container-fluid">
 <div class="row">
   <div class="column">
+    <a href="description.php?ID=ENT-3&category=new">
     <div class="card">
       <img src="img/books/book1.jpg" alt="1" style="width:100%">
     </div>
@@ -208,10 +238,12 @@ if (isset($_POST['submit']))
         <p class="title">Summer Love</p>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
+      </div>
+      </a>    
   </div>
 
   <div class="column">
+    <a href="description.php?ID=ENT-4&category=new">
     <div class="card">
       <img src="img/books/book2.jpg" alt="2" style="width:100%">
     </div>
@@ -220,10 +252,12 @@ if (isset($_POST['submit']))
         <p class="title">Summer Love</p>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
+      </div>
+      </a>    
   </div>
 
   <div class="column">
+    <a href="description.php?ID=ENT-5&category=new">
     <div class="card">
       <img src="img/books/book3.jpg" alt="3" style="width:100%">
     </div>
@@ -232,10 +266,12 @@ if (isset($_POST['submit']))
         <p class="title">Summer Love</p>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
+      </div>
+      </a>    
   </div>
 
   <div class="column">
+    <a href="description.php?ID=ENT-60&category=new">
     <div class="card">
       <img src="img/books/book4.jpg" alt="4" style="width:100%">
     </div>
@@ -244,10 +280,12 @@ if (isset($_POST['submit']))
         <p class="title">Summer Love</p>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
+      </div>
+      </a>    
   </div>
 
   <div class="column">
+    <a href="description.php?ID=ENT-7&category=new">
     <div class="card">
       <img src="img/books/book5.jpg" alt="5" style="width:100%">
     </div>
@@ -256,10 +294,12 @@ if (isset($_POST['submit']))
         <p class="title">Summer Love</p>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
+      </div>
+    </a>
   </div>
 
   <div class="column">
+    <a href="description.php?ID=ENT-8&category=new">
     <div class="card">
       <img src="img/books/book6.jpg" alt="6" style="width:100%">
     </div>
@@ -268,7 +308,8 @@ if (isset($_POST['submit']))
         <p class="title">Summer Love</p>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
+      </div>
+      </a>    
   </div>
 </div>
 </div>

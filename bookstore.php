@@ -10,7 +10,7 @@
 <!-- Navigation -->
 
 <div class="navbar">
-  <a class="logo" href="#"><strong>QUINTET</strong></a>
+  <a class="logo" href="index.php"><strong>QUINTET</strong></a>
   <input type="text" class="form-control" name="keyword" placeholder="Search for a Book, Author or Category" style="width: 50%;"> 
     <div class="navbar-right">
       <a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
@@ -49,7 +49,7 @@
 <!--   <div class="header">
   <h2>RECENTLY ADDED</h2>
 </div> -->
-  <div class="column" >
+  <div class="column">
     <div class="card" >
       <img src="img/books/book1.jpg" alt="1" style="width:100%">
     </div>
