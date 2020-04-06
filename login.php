@@ -17,7 +17,7 @@
 
 <link href="css/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/css/my.css" rel="stylesheet">
-<link href="css/my.css" rel="stylesheet">
+<link href="css/my1.css" rel="stylesheet">
 
 <body>
 <?php

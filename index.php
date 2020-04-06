@@ -75,7 +75,7 @@ if (isset($_POST['submit']))
  
   <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
 
-<link href="css/my.css" rel="stylesheet">
+<link href="css/my1.css" rel="stylesheet">
 
 
 
@@ -131,15 +131,96 @@ if (isset($_POST['submit']))
 
 <!-- Book Description -->
 <div class="container-fluid">
-<div class="row" >
-  <div class="column">
+<div class="row" style="overflow-x: auto; width:100%; ">
+  
+
+
+
+
+ <div class="column" style="width: auto; ">
    <a href="description.php?ID=NEW-1&category=new">
     <div class="card">
       <img src="img/books/book1.jpg" alt="1" style="width:100%">
     </div>
       <div class="container">
-        <h2> 1 book </h2>
-        <p class="title">Summer Love</p>
+        <hr>
+        1 book <br>
+        Summer Love <br>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div> 
+      </a>   
+  </div> <div class="column" style="width: auto; ">
+   <a href="description.php?ID=NEW-1&category=new">
+    <div class="card">
+      <img src="img/books/book1.jpg" alt="1" style="width:100%">
+    </div>
+      <div class="container">
+        <hr>
+        1 book <br>
+        Summer Love <br>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div> 
+      </a>   
+  </div> <div class="column" style="width: auto; ">
+   <a href="description.php?ID=NEW-1&category=new">
+    <div class="card">
+      <img src="img/books/book1.jpg" alt="1" style="width:100%">
+    </div>
+      <div class="container">
+        <hr>
+        1 book <br>
+        Summer Love <br>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div> 
+      </a>   
+  </div> <div class="column" style="width: auto; ">
+   <a href="description.php?ID=NEW-1&category=new">
+    <div class="card">
+      <img src="img/books/book1.jpg" alt="1" style="width:100%">
+    </div>
+      <div class="container">
+        <hr>
+        1 book <br>
+        Summer Love <br>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div> 
+      </a>   
+  </div> <div class="column" style="width: auto; ">
+   <a href="description.php?ID=NEW-1&category=new">
+    <div class="card">
+      <img src="img/books/book1.jpg" alt="1" style="width:100%">
+    </div>
+      <div class="container">
+        <hr>
+        1 book <br>
+        Summer Love <br>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div> 
+      </a>   
+  </div>
+
+
+
+
+
+
+
+
+
+  <div class="column" style="width: auto; ">
+   <a href="description.php?ID=NEW-1&category=new">
+    <div class="card">
+      <img src="img/books/book1.jpg" alt="1" style="width:100%">
+    </div>
+      <div class="container">
+        <hr>
+        1 book <br>
+        Summer Love <br>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
       </div> 
@@ -148,70 +229,75 @@ if (isset($_POST['submit']))
 
   
 
-  <div class="column">
+  <div class="column" style="width: auto;">
     <a href="description.php?ID=NEW-2&category=new">
     <div class="card">
       <img src="img/books/book2.jpg" alt="2" style="width:100%">
     </div>
       <div class="container">
-        <h2> 2 book </h2>
-        <p class="title">Summer Love</p>
+        <hr>
+        2 book <br>
+        Summer Love <br>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
       </div>
       </a>    
   </div>
 
-  <div class="column">
+  <div class="column" style="width: auto;">
   <a href="description.php?ID=NEW-3&category=new">
     <div class="card">
       <img src="img/books/book3.jpg" alt="3" style="width:100%">
     </div>
       <div class="container">
-        <h2> 3 book </h2>
-        <p class="title">Summer Love</p>
+        <hr>
+        2 book <br>
+        Summer Love <br>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
       </div>
       </a>    
   </div>
 
-  <div class="column">
+  <div class="column"  style="width: auto;">
   <a href="description.php?ID=NEW-4&category=new">    
     <div class="card">
       <img src="img/books/book4.jpg" alt="4" style="width:100%">
     </div>
       <div class="container">
-        <h2> 4 book </h2>
-        <p class="title">Summer Love</p>
+        <hr>
+        2 book <br>
+        Summer Love <br>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
       </div>
       </a>    
   </div>
 
-  <div class="column">
+  <div class="column" style="width: auto;">
    <a href="description.php?ID=ENT-1&category=new">   
     <div class="card">
       <img src="img/books/book5.jpg" alt="5" style="width:100%">
     </div>
       <div class="container">
-        <h2> 5 book </h2>
-        <p class="title">Summer Love</p>
+        <hr>
+        2 book <br>
+        Summer Love <br>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
       </div>
       </a>    
   </div>
 
-  <div class="column">
+  <div class="column" style="width: auto;">
   <a href="description.php?ID=ENT-2&category=new">
     <div class="card">
       <img src="img/books/book6.jpg" alt="6" style="width:100%">
     </div>
       <div class="container">
-        <h2> 6 book </h2>
-        <p class="title">Summer Love</p>
+        <hr>
+        2 book <br>
+        Summer Love <br>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
       </div>

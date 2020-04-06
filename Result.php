@@ -11,7 +11,7 @@ if(!isset($_SESSION['user']))
 <link rel="stylesheet" href="css/w3.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="css/my.css" type="text/css">
+<link rel="stylesheet" href="css/my1.css" type="text/css">
 <body>
 <style>
 

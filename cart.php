@@ -43,7 +43,7 @@ include "dbconnect.php";
     <title>order</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/my.css" rel="stylesheet">
+    <link href="css/my1.css" rel="stylesheet">
     <style>
         #cart {margin-top:30px;margin-bottom:30px;}
         .panel {border:1px solid #D67B22;padding-left:0px;padding-right:0px;}
