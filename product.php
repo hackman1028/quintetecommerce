@@ -26,12 +26,12 @@ if(!isset($_SESSION['user']))
 <!-- Navigation -->
 
 <div class="navbar">
-  <a class="logo" href="#"><strong>QUINTET</strong></a>
+  <a class="logo" href="index.php"><strong>QUINTET</strong></a>
   <input type="text" class="form-control" name="keyword" placeholder="Search for a Book, Author or Category" style="width: 50%;"> 
     <div class="navbar-right">
       <a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
       <a class="active" href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
-      <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
+      <a href="contact.php"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
       <a href="login.php"><i class="fa fa-fw fa-user"></i> Login</a>
     </div>
 </div>

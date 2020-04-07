@@ -1,7 +1,58 @@
 <?php
 session_start();
-if(!isset($_SESSION['user']))
-       header("location: index.php?Message=Login To Continue");
+// if(!isset($_SESSION['user']))
+//        header("location: index.php?Message=Login To Continue");
+
+include "dbconnect.php";
+
+
+if (isset($_POST['submit']))
+{
+  if($_POST['submit']=="login")
+  {
+    $username=$_POST['login_username'];
+    $password=$_POST['login_password'];
+    $query = "SELECT * from users where UserName = '$username' AND Password='$password'";
+    $result = mysqli_query($con,$query)or die(mysql_error());
+    if(mysqli_num_rows($result) > 0)
+    {
+      $row = mysqli_fetch_assoc($result);
+      $_SESSION['user']=$row['UserName'];
+      // print'
+      // <script type="text/javascript">alert("sucessfully logged in!!");</script>
+      // ';
+    }
+    else
+    {
+      print'
+      <script type="text/javascript">alert("Incorrect Username Or Password!!");</script>
+      ';
+    }
+  }
+  else if($_POST['submit']=="register")
+  {
+    $username=$_POST['register_username'];
+    $password=$_POST['register_password'];
+    $query="SELECT * from user where UserName = '$username'";
+    $result=mysqli_query($con,$query) or die(mysqli_error());
+    if(mysqli_num_row($result)>0)
+    {
+      print'
+      <script type="text/javascript">alert("username is taken");</script>';
+    }
+    else
+    {
+      $query="INSERT INTO users VALUES ('$username','$password')";
+      $result=mysqli_query($con,$query);
+      print'
+      <script type="text/javascript">
+      alert("Sucessfully Registered!!");
+      </script>';
+    }
+  }
+  }
+
+   
 ?>
 
 
@@ -19,12 +70,59 @@ if(!isset($_SESSION['user']))
 
 <div class="navbar">
   <a class="logo" href="index.php"><strong>QUINTET</strong></a>
-  <input type="text" class="form-control" name="keyword" placeholder="Search for a Book, Author or Category" style="width: 50%;"> 
+  <div class="searchbox">
+  <input type="text" class="form-control" name="keyword" placeholder="Search for a Book, Author or Category" style="width: 50%;">
+  </div> 
     <div class="navbar-right">
       <a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
       <a class="active" href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
-      <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
-      <a href="login.php"><i class="fa fa-fw fa-user"></i> Login</a>
+      <a href="contact.php"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
+      <a onclick="openForm()"><i class="fa fa-fw fa-user"></i> Login</a>
+      <form class="form-popup" id="myForm" action="bookstore.php" method="post" role="form">
+
+
+    <?php
+        if(!isset($_SESSION['user']))
+          {
+            echo'
+
+  
+  <div class="form-container">
+  <div class="imgcontainer">
+    <img src="img/img_avatar2.png" alt="Avatar" class="avatar" style="width:150px; height:auto;">
+  </div>
+
+  <h2> Login </h2>
+   <div class="form-group">
+      <label class="sr-only" for="username">Username</label>
+      <input type="text" name="login_username" class="form-control" placeholder="Username" required>
+  </div>
+  <div class="form-group">
+      <label class="sr-only" for="password">Password</label>
+      <input type="password" name="login_password" class="form-control"  placeholder="Password" required>
+  </div>
+  <div class="form-group">
+      <button type="submit" name="submit" value="login" class="btn btn-block"> Sign in </button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
+  </div>
+  </div>                                      
+  ';
+        } 
+        else
+          {   echo' 
+                    <div>
+                    <ul style="list-style-type:none; margin: 10px; padding: 0px;">
+                    <li> <a href="#" class="btn btn-lg"> Hello ' .$_SESSION['user']. '.</a></li>
+                    <li> <a href="cart.php" class="btn btn-lg"> Cart </a> </li> 
+                    <li> <a href="destroy.php" class="btn btn-lg"> LogOut </a> </li>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                    </ul>
+                    </div>'; 
+          }
+?>
+</form>
+
     </div>
 </div>
 
@@ -57,7 +155,7 @@ if(!isset($_SESSION['user']))
 
 
   <?php
-    include "dbconnect.php";
+    // include "dbconnect.php";
     if(isset($_GET['value']))
         {  
            $_SESSION['category']=$_GET['value'];
@@ -101,7 +199,7 @@ if(!isset($_SESSION['user']))
                  <h2 style="color:rgb(228, 55, 25);text-transform:uppercase;margin-bottom:0px;"> '. $category .' STORE </h2>
            </div>
         </div>      
-        <div class="container fluid">
+        <div class="container-fluid">
              <div class="row">
                   <div class="col-sm-5 col-sm-offset-6 col-md-5 col-md-offset-7 col-lg-4 col-lg-offset-8">
                        <form action="';echo $_SERVER['PHP_SELF'];echo'" method="post" class="pull-right">
@@ -130,14 +228,14 @@ if(!isset($_SESSION['user']))
                <a href="'.$description.'">
                 
 
-                <div class="column">
+              <div class="column">
                 <div class="card" style="max-width: 120px;">
                   <img class="book block-center img-responsive" src="'.$path.'">
                 </div>
-                  <div class="container">
+                  <div class="container" style="width: 55%;">
                     <hr>
                     ' . $row["Title"] . '<br>
-                    ' . $row["Price"] .' &nbsp
+                    ' . $row["Price"] .'
 
                     <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
                   </div>    
@@ -383,6 +481,16 @@ if(!isset($_SESSION['user']))
     </footer>
 
 
+
+<script>
+  function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
 </body>
 </html>
 

@@ -27,9 +27,9 @@ if (isset($_POST['submit']))
     {
       $row = mysqli_fetch_assoc($result);
       $_SESSION['user']=$row['UserName'];
-      print'
-      <script type="text/javascript">alert("sucessfully logged in!!");</script>
-      ';
+      // print'
+      // <script type="text/javascript">alert("sucessfully logged in!!");</script>
+      // ';
     }
     else
     {
@@ -85,34 +85,67 @@ if (isset($_POST['submit']))
 <div class="navbar">
   <a class="logo" href="index.php"><strong>QUINTET</strong></a>
 
-<div id="searchbox">
+<div class="searchbox">
 <form role="search" method="POST" action="Result.php" style="border: 0px;">
-  <input type="text" name="keyword" placeholder="Search.." style="width: 50%;">
+  <input type="text" name="keyword" placeholder="Search for a Book, Author of Category" style="width: 50%;">
   </form>
   </div> 
 
     <div class="navbar-right">
-      <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a class="active" href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
       <a href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
-      <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
-      <a href="login.php"><i class="fa fa-fw fa-user"></i> Login</a>
+      <a href="contact.php"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
+      <a onclick="openForm()"><i class="fa fa-fw fa-user"></i> Login</a>
+      <form class="form-popup" id="myForm" action="index.php" method="post" role="form">
+
+
+    <?php
+        if(!isset($_SESSION['user']))
+          {
+            echo'
+
+  
+  <div class="form-container">
+  <div class="imgcontainer">
+    <img src="img/img_avatar2.png" alt="Avatar" class="avatar" style="width:150px; height:auto;">
+  </div>
+
+  <h2> Login </h2>
+   <div class="form-group">
+      <label class="sr-only" for="username">Username</label>
+      <input type="text" name="login_username" class="form-control" placeholder="Username" required>
+  </div>
+  <div class="form-group">
+      <label class="sr-only" for="password">Password</label>
+      <input type="password" name="login_password" class="form-control"  placeholder="Password" required>
+  </div>
+  <div class="form-group">
+      <button type="submit" name="submit" value="login" class="btn btn-block"> Sign in </button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
+  </div>
+  </div>                                      
+  ';
+        } 
+        else
+          {   echo' 
+                    <div>
+                    <ul style="list-style-type:none; margin: 10px; padding: 0px;">
+                    <li> <a href="#" class="btn btn-lg"> Hello ' .$_SESSION['user']. '.</a></li>
+                    <li> <a href="cart.php" class="btn btn-lg"> Cart </a> </li> 
+                    <li> <a href="destroy.php" class="btn btn-lg"> LogOut </a> </li>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                    </ul>
+                    </div>'; 
+          }
+?>
+</form>
+
+
     </div>
 </div>
 
-<!-- 
-  <div id="top" >
-      <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;">
-          <div>
-              <form role="search" method="POST" action="Result.php">
-                  <input type="text" class="form-control" name="keyword" style="width:80%;margin:20px 10% 20px 10%;" placeholder="Search for a Book , Author Or Category">
-              </form>
-          </div>
-      </div> -->
-  <!--  <div id="searchbox1" >
-              <form class="navbar-form navbar-left" role="search" method="POST" action="Result.php">
-                  <input type="text" class="form-control" name="keyword" style="width:250%; margin-left: 20%" placeholder="Search for a Book, Author or Category">
-              </form>
-          </div> -->
+
 
 <!-- Slide Show -->
 <section>
@@ -131,11 +164,8 @@ if (isset($_POST['submit']))
 
 <!-- Book Description -->
 <div class="container-fluid">
-<div class="row" style="overflow-x: auto; width:100%; ">
+<div class="row" style="overflow-x: auto; width:100%; flex-wrap: nowrap; -webkit-appearance: none;">
   
-
-
-
 
  <div class="column" style="width: auto; ">
    <a href="description.php?ID=NEW-1&category=new">
@@ -306,6 +336,8 @@ if (isset($_POST['submit']))
 </div>
 </div>
 
+
+
 <!-- Book section -->
 <div class="header">
   <h2>BEST SELLER</h2>
@@ -313,85 +345,163 @@ if (isset($_POST['submit']))
 
 <!-- Book Description -->
 <div class="container-fluid">
-<div class="row">
-  <div class="column">
-    <a href="description.php?ID=ENT-3&category=new">
+<div class="row" style="overflow-x: auto; width:100%; flex-wrap: nowrap; -webkit-appearance: none;">
+  
+
+ <div class="column" style="width: auto; ">
+   <a href="description.php?ID=NEW-1&category=new">
     <div class="card">
       <img src="img/books/book1.jpg" alt="1" style="width:100%">
     </div>
       <div class="container">
-        <h2> 1 book </h2>
-        <p class="title">Summer Love</p>
+        <hr>
+        1 book <br>
+        Summer Love <br>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>
-      </a>    
+      </div> 
+      </a>   
+  </div> <div class="column" style="width: auto; ">
+   <a href="description.php?ID=NEW-1&category=new">
+    <div class="card">
+      <img src="img/books/book1.jpg" alt="1" style="width:100%">
+    </div>
+      <div class="container">
+        <hr>
+        1 book <br>
+        Summer Love <br>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div> 
+      </a>   
+  </div> <div class="column" style="width: auto; ">
+   <a href="description.php?ID=NEW-1&category=new">
+    <div class="card">
+      <img src="img/books/book1.jpg" alt="1" style="width:100%">
+    </div>
+      <div class="container">
+        <hr>
+        1 book <br>
+        Summer Love <br>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div> 
+      </a>   
+  </div> <div class="column" style="width: auto; ">
+   <a href="description.php?ID=NEW-1&category=new">
+    <div class="card">
+      <img src="img/books/book1.jpg" alt="1" style="width:100%">
+    </div>
+      <div class="container">
+        <hr>
+        1 book <br>
+        Summer Love <br>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div> 
+      </a>   
+  </div> <div class="column" style="width: auto; ">
+   <a href="description.php?ID=NEW-1&category=new">
+    <div class="card">
+      <img src="img/books/book1.jpg" alt="1" style="width:100%">
+    </div>
+      <div class="container">
+        <hr>
+        1 book <br>
+        Summer Love <br>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div> 
+      </a>   
   </div>
 
-  <div class="column">
-    <a href="description.php?ID=ENT-4&category=new">
+
+  <div class="column" style="width: auto; ">
+   <a href="description.php?ID=NEW-1&category=new">
+    <div class="card">
+      <img src="img/books/book1.jpg" alt="1" style="width:100%">
+    </div>
+      <div class="container">
+        <hr>
+        1 book <br>
+        Summer Love <br>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div> 
+      </a>   
+  </div>
+
+  
+
+  <div class="column" style="width: auto;">
+    <a href="description.php?ID=NEW-2&category=new">
     <div class="card">
       <img src="img/books/book2.jpg" alt="2" style="width:100%">
     </div>
       <div class="container">
-        <h2> 2 book </h2>
-        <p class="title">Summer Love</p>
+        <hr>
+        2 book <br>
+        Summer Love <br>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
       </div>
       </a>    
   </div>
 
-  <div class="column">
-    <a href="description.php?ID=ENT-5&category=new">
+  <div class="column" style="width: auto;">
+  <a href="description.php?ID=NEW-3&category=new">
     <div class="card">
       <img src="img/books/book3.jpg" alt="3" style="width:100%">
     </div>
       <div class="container">
-        <h2> 3 book </h2>
-        <p class="title">Summer Love</p>
+        <hr>
+        2 book <br>
+        Summer Love <br>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
       </div>
       </a>    
   </div>
 
-  <div class="column">
-    <a href="description.php?ID=ENT-60&category=new">
+  <div class="column"  style="width: auto;">
+  <a href="description.php?ID=NEW-4&category=new">    
     <div class="card">
       <img src="img/books/book4.jpg" alt="4" style="width:100%">
     </div>
       <div class="container">
-        <h2> 4 book </h2>
-        <p class="title">Summer Love</p>
+        <hr>
+        2 book <br>
+        Summer Love <br>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
       </div>
       </a>    
   </div>
 
-  <div class="column">
-    <a href="description.php?ID=ENT-7&category=new">
+  <div class="column" style="width: auto;">
+   <a href="description.php?ID=ENT-1&category=new">   
     <div class="card">
       <img src="img/books/book5.jpg" alt="5" style="width:100%">
     </div>
       <div class="container">
-        <h2> 5 book </h2>
-        <p class="title">Summer Love</p>
+        <hr>
+        2 book <br>
+        Summer Love <br>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
       </div>
-    </a>
+      </a>    
   </div>
 
-  <div class="column">
-    <a href="description.php?ID=ENT-8&category=new">
+  <div class="column" style="width: auto;">
+  <a href="description.php?ID=ENT-2&category=new">
     <div class="card">
       <img src="img/books/book6.jpg" alt="6" style="width:100%">
     </div>
       <div class="container">
-        <h2> 6 book </h2>
-        <p class="title">Summer Love</p>
+        <hr>
+        2 book <br>
+        Summer Love <br>
         <p> Rs. 200 </p>
         <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
       </div>
@@ -399,6 +509,8 @@ if (isset($_POST['submit']))
   </div>
 </div>
 </div>
+
+
 
 
 
@@ -468,6 +580,14 @@ function carousel() {
   if (myIndex > x.length) {myIndex = 1}
   x[myIndex-1].style.display = "block";
   setTimeout(carousel, 3000);
+}
+
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
 }
 </script>
 

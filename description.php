@@ -21,7 +21,7 @@ if(!isset($_SESSION['user']))
         .tag {display:inline;float:left;padding:2px 5px;width:auto;background:#F5A623;color:#fff;height:23px;}
         .tag-side{display:inline;float:left;}
         #books {border:1px solid #DEEAEE; margin-bottom:20px;padding-top:30px;padding-bottom:20px;background:#fff; margin-left:10%;margin-right:10%;}
-        #description {border:1px solid #DEEAEE; margin-bottom:20px;padding:20px 50px;background:#fff;margin-left:10%;margin-right:10%;}
+        #description {border:1px solid #DEEAEE; margin-bottom:20px;padding:20px 20px;background:#fff;margin-left:3%;margin-right:3%; text-align: left; width: 100%;}
         #description hr{margin:auto;}
         #service{background:#fff;padding:20px 10px;width:112%;margin-left:-6%;margin-right:-6%;}
         .glyphicon {color:#D67B22;}
@@ -32,7 +32,9 @@ if(!isset($_SESSION['user']))
 
 <div class="navbar">
   <a class="logo" href="index.php"><strong>QUINTET</strong></a>
+  <div class="searchbox">
   <input type="text" class="form-control" name="keyword" placeholder="Search for a Book, Author or Category" style="width: 50%;"> 
+   </div>
     <div class="navbar-right">
       <a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
       <a class="active" href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
@@ -56,60 +58,102 @@ if(!isset($_SESSION['user']))
             $path="img/books/".$row['PID'].".jpg";
             $target="cart.php?ID=".$PID."&";
 echo '
-  <div class="container-fluid" id="books">
+  <div class="container-fluid11" id="books11">
     <div class="row">
-      <div class="col-sm-10 col-md-6">
-                          <div class="tag">'.$row["Discount"].'%OFF</div>
-                              <div class="tag-side"><img src="img/orange-flag.png">
-                          </div>
-                         <img class="center-block img-responsive" src="'.$path.'" height="550px" style="padding:20px;">
-      </div>
-      <div class="col-sm-10 col-md-4 col-md-offset-1">
-        <h2> '. $row["Title"] . '</h2>
-                                <span style="color:#00B9F5;">
-                                 #'.$row["Author"].'&nbsp &nbsp #'.$row["Publisher"].'
-                                </span>
-        <hr>            
-                                <span style="font-weight:bold;"> Quantity : </span>';
-                                echo'<select id="quantity">';
-                                   for($i=1;$i<=$row['Available'];$i++)
-                                       echo '<option value="'.$i.'">'.$i.'</option>';
-                               echo ' </select>';
-echo'                           <br><br><br>
-                                <a id="buyLink" href="'.$target.'" class="btn btn-lg btn-danger" style="padding:15px;color:white;text-decoration:none;"> 
-                                    ADD TO CART for Rs '.$row["Price"] .' <br>
-                                    <span style="text-decoration:line-through;"> RS'.$row["MRP"].'</span> 
-                                    | '.$row["Discount"].'% discount
-                                 </a> 
-
-      </div>
-    </div>
+      <div class="main">
+          <div class="card" style="width: 350px; height: 500px; margin: 30px;">
+                <div class="tag">'.$row["Discount"].'%OFF</div>
+                <div class="tag-side"><img src="img/orange-flag.png"></div>
+              <img class="center-block img-responsive" src="'.$path.'" height="550px" style="padding:20px;">
           </div>
-     ';
-echo '
-          <div class="container-fluid" id="description">
-    <div class="row">
-      <h2> Description </h2> 
-                        <p>'.$row['Description'] .'</p>
-                        <pre style="background:inherit;border:none;">
-   PRODUCT CODE  '.$row["PID"].'   <hr> 
-   TITLE         '.$row["Title"].' <hr> 
-   AUTHOR        '.$row["Author"].' <hr>
-   AVAILABLE     '.$row["Available"].' <hr> 
-   PUBLISHER     '.$row["Publisher"].' <hr> 
-   EDITION       '.$row["Edition"].' <hr>
-   LANGUAGE      '.$row["Language"].' <hr>
-   PAGES         '.$row["page"].' <hr>
-   WEIGHT        '.$row["weight"].' <hr>
-                        </pre>
-    </div>
-  </div>
-';
+          <div class="container" style="width: 60%;">
+            <h2> '. $row["Title"] . '</h2>
+            <span style="color:#00B9F5;">
+            #'.$row["Author"].'&nbsp &nbsp #'.$row["Publisher"].'
+            </span>
+            <hr>            
+            <span style="font-weight:bold;"> Quantity : </span>';
+            echo'<select id="quantity">';
+            for($i=1;$i<=$row['Available'];$i++)
+            echo '<option value="'.$i.'">'.$i.'</option>';
+            echo ' </select>';
+    echo'   <br><br><br>
+            <a id="buyLink" href="'.$target.'" class="button" style="padding:15px;color:white;text-decoration:none;"> 
+            <i class="fa fa-shopping-cart"></i>  ADD TO CART &nbsp |&nbsp PRICE : Rs. '.$row["Price"] .' (
+            <span style="text-decoration:line-through;"> Rs. '.$row["MRP"].'</span> 
+            | '.$row["Discount"].'% discount)
+            </a> 
+            <h2> Description </h2> 
+            <p align="justify">'.$row['Description'] .'</p>
+          </div>
 
-            
+  <div class="container" id="description"> 
+  <pre style="background:inherit;border:none;">
+    PRODUCT CODE  :  '.$row["PID"].'   <hr> 
+    TITLE         :  '.$row["Title"].' <hr> 
+    AUTHOR        :  '.$row["Author"].' <hr>
+    AVAILABLE     :  '.$row["Available"].' <hr> 
+    PUBLISHER     :  '.$row["Publisher"].' <hr> 
+    EDITION       :  '.$row["Edition"].' <hr>
+    LANGUAGE      :  '.$row["Language"].' <hr>
+    PAGES         :  '.$row["page"].' <hr>
+    WEIGHT        :  '.$row["weight"].' <hr>
+    </pre>
+  </div>
+
+      </div>';
+
+echo'
+<div class="side" ">
+
+  <div class="column1">
+    <div class="card" >
+      <img src="img/books/book1.jpg" alt="1" >
+    </div>
+      <div class="container">
+        <hr>
+        1 book <br>
+        Summer Love <br>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div>    
+  </div>
+
+  <div class="column1">
+    <div class="card">
+      <img src="img/books/book2.jpg" alt="2" >
+    </div>
+      <div class="container">
+        <hr>
+        1 book <br>
+        Summer Love <br>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div>    
+  </div>
+
+
+   <div class="column1">
+    <div class="card">
+      <img src="img/books/book2.jpg" alt="2" >
+    </div>
+      <div class="container">
+        <hr>
+        1 book <br>
+        Summer Love <br>
+        <p> Rs. 200 </p>
+        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
+      </div>    
+  </div>
+
+  </div>;
+
+
+    </div>';           
             }
         }
     echo '</div>';
+
     ?>  
 
 
