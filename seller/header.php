@@ -71,9 +71,8 @@ include '../dbconnect.php';
   </div> 
 
     <div class="navbar-right">
-      <a class="active" href="../index.php"><i class="fa fa-fw fa-home"></i> Home</a>
-      <a href="../bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
-      <a href="../contact.php"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+      <a href="seller.php"><i class="fa fa-fw fa-home"></i> VENDOR SITE</a>
+     
 
 
 
@@ -86,7 +85,7 @@ include '../dbconnect.php';
      {
       echo'
       <div class="dropdown">
-        <button class="dropbtn"> Hello ' .$_SESSION['user']. '&nbsp <i class="fa fa-caret-down"></i></button>
+        <button class="dropbtn" style="text-transform:uppercase;"> Hello ' .$_SESSION['user']. '&nbsp <i class="fa fa-caret-down"></i></button>
           <div class="dropdown-content">
               <a href="../destroy.php" class="btn btn-lg"> Logout </a>
               <a href="../index.php">Customer </a>

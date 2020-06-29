@@ -26,7 +26,7 @@ if(isset($_POST['submit']))
         $username=$_POST['login_username'];
         $password=$_POST['login_password'];
         $usertype=$_POST['UserType'];
-
+        
         $query = "SELECT * from users where UserName ='$username'AND Password='$password'";
         $result = mysqli_query($con,$query)or die(mysql_error($con));
         if(mysqli_num_rows($result) > 0)
