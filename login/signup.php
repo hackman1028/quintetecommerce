@@ -1,3 +1,72 @@
+
+<?php include 'dbconnect.php'; 
+
+if(isset($_POST['submit']))
+{
+  if($_POST['submit']=="login")
+  { 
+        $username=$_POST['login_username'];
+        $password=$_POST['login_password'];
+        $query = "SELECT * from users where UserName ='$username' AND Password='$password'";
+        $result = mysqli_query($con,$query)or die(mysql_error());
+        if(mysqli_num_rows($result) > 0)
+        {
+             $row = mysqli_fetch_assoc($result);
+             $_SESSION['user']=$row['UserName'];
+             print'
+                <script type="text/javascript">alert("successfully logged in!!!");</script>
+                  ';
+        }
+        else
+        {    print'
+              <script type="text/javascript">alert("Incorrect Username Or Password!!");</script>
+                  ';
+        }
+  }
+  else if($_POST['submit'] = "register")
+  {
+        $username=$_POST['register_username'];
+        $password=$_POST['register_password'];
+        $query="SELECT * FROM users WHERE UserName = '$username'";
+        $result=mysqli_query($con,$query) or die(mysql_error);
+        // if(mysqli_num_rows($result)>0)
+        // $db_username = 'UserName';
+          while($row = mysqli_fetch_array($result)){
+            $db_username = $row['UserName'];
+          }
+        if($username == $db_username)
+        {   
+               echo'
+               <script type="text/javascript">alert("username is taken");</script>
+                    ';
+
+        }
+        else
+        {
+          $query ="INSERT INTO users (UserName, Password) VALUES ('$username','$password')";
+          $result=mysqli_query($con,$query);
+          echo'
+                <script type="text/javascript">
+                 alert("Successfully Registered!!!");
+                </script>';
+          echo "<script>window.open('index.php','_self')</script>";
+
+        }
+  }
+}
+
+
+
+?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <link href="css/my.css" rel="stylesheet">
@@ -115,25 +184,16 @@ hr {
 </style>
 <body>
 
-<h2>Modal Signup Form</h2>
-
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button>
-
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="/action_page.php">
+  <form class="modal-content" role="form" method="POST" action="">
     <div class="container">
       <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="register_username" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-
-      <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      <input type="password" placeholder="Enter Password" name="register_password" required>
       
       <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
@@ -142,24 +202,14 @@ hr {
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
       <div class="clearfix">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn"><a href="signup.php">Sign Up</a></button>
+        <button type="button" class="cancelbtn"><a href= "index.php">Cancel</a></button>
+        <button type="submit" value="register" name="submit" class="signupbtn">Sign Up</button>
       </div>
     </div>
   </form>
-</div>
 
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
+
 
 </body>
 </html>

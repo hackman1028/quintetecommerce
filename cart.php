@@ -1,11 +1,29 @@
+
 <?php
-session_start();
+include "header.php";
 if(!isset($_SESSION['user']))
-	heder("location: index.php?Message=Login to Continue");
-include "dbconnect.php";
-	$customer=$_SESSION['user'];
-?>
-<?php
+  header("location: index.php?Message=Login to Continue");
+
+  $customer=$_SESSION['user'];
+
+
+function getIpAdd()
+{
+    if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
+    {
+      $ip=$_SERVER['HTTP_CLIENT_IP'];
+    }
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
+    {
+      $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+    else
+    {
+      $ip=$_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}
+
 
 	if(isset($_GET['place']))
 			{
@@ -30,18 +48,73 @@ include "dbconnect.php";
 			}
 			?>
 
+<?php
+if(isset($_POST["add_to_cart"]))  
+ {  
+      if(isset($_SESSION["shopping_cart"]))  
+      {  
+           $item_array_id = array_column($_SESSION["shopping_cart"], "item_id");  
+           if(!in_array($_GET["id"], $item_array_id))  
+           {  
+            $count = count($_SESSION["shopping_cart"]);  
+            $item_array = array(  
+             'item_id'      =>     $_GET["id"],  
+             'item_name'    =>     $_POST["hidden_name"],  
+             'item_price'   =>     $_POST["hidden_price"],  
+             'item_quantity'=>     $_POST["quantity"]  
+           );  
+            $_SESSION["shopping_cart"][$count] = $item_array;  
+           }  
+           else  
+           {  
+                echo '<script>alert("Item Already Added")</script>';  
+                echo '<script>window.location="index.php"</script>';  
+           }  
+      }  
+      else  
+      {  
+           $item_array = array(  
+                'item_id'               =>     $_GET["id"],  
+                'item_name'               =>     $_POST["hidden_name"],  
+                'item_price'          =>     $_POST["hidden_price"],  
+                'item_quantity'          =>     $_POST["quantity"]  
+           );  
+           $_SESSION["shopping_cart"][0] = $item_array;  
+      }  
+ }  
+ if(isset($_GET["action"]))  
+ {  
+      if($_GET["action"] == "delete")  
+      {  
+           foreach($_SESSION["shopping_cart"] as $keys => $values)  
+           {  
+                if($values["item_id"] == $_GET["id"])  
+                {  
+                     unset($_SESSION["shopping_cart"][$keys]);  
+                     echo '<script>alert("Item Removed")</script>';  
+                     echo '<script>window.location="index.php"</script>';  
+                }  
+           }  
+      }  
+ }  
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Cart">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <title>order</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/my1.css" rel="stylesheet">
+?>
+
+
+<?php
+
+      if(isset($_POST['remove']))
+      {
+        $remove_id=$_POST['remove'];
+        $query="DELETE FROM cart where Customer='$customer' AND Product='$remove_id'";
+        $result=mysqli_query($con,$query);
+      ?>
+        <script type="text/javascript">window.open('cart.php','_self');
+        </script>
+        <?php
+      }
+  ?>
+
     <style>
         #cart {margin-top:30px;margin-bottom:30px;}
         .panel {border:1px solid #0E345A;padding-left:0px;padding-right:0px;}
@@ -49,25 +122,7 @@ include "dbconnect.php";
         @media only screen and (width: 767px) { body{margin-top:150px;}}
     </style>
 
-</head>
-<body>
-
-<div class="navbar topnav">
-  <a class="logo" href="index.php"><strong>QUINTET</strong></a>
-  <div class="searchbox">
-  <form role="search" method="POST" action="Result.php">
-  <input type="text" class="form-control" name="keyword" placeholder="Search.." style="width: 50%;">
-  </form> 
-</div>
-    <div class="navbar-right">
-      <a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
-      <a href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
-      <a href="contact.php"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
-      <a class="active" href="login.php"><i class="fa fa-fw fa-user"></i> Login</a>
-    </div>
-</div>
-
-
+<!-- 
 	<?php
 echo '<div class="container-fluid" id="cart">
       <div class="row">
@@ -80,17 +135,17 @@ echo '<div class="container-fluid" id="cart">
               	if(isset($_GET['ID']))
 	            {   
                         $product=$_GET['ID'];
-                        $quantity=$_GET['quantity'];
+                        $quantity=$_GET['Quantity'];
                         $query="SELECT * from cart where Customer='$customer' AND Product='$product'";
                         $result=mysqli_query($con,$query);
                         $row = mysqli_fetch_assoc($result);
                         if(mysqli_num_rows($result)==0)
-	                         { $query="INSERT INTO cart values('$customer','$product','$quantity')"; 
+	                         { $query="INSERT INTO cart (Customer, Product, Quantity) VALUES ('$customer', '$product', '$quantity')"; 
                               $result=mysqli_query($con,$query);
                             }
                         else
-                           { $new=$_GET['quantity'];
-                             $query="UPDATE `cart` SET Quantity=$new WHERE Customer='$customer' AND Product='$product'";
+                           { $new=$_GET['Quantity'];
+                             $query="UPDATE cart SET Quantity=$new WHERE Customer='$customer' AND Product='$product'";
 	                           $result=mysqli_query($con,$query);
                             }
                     }
@@ -106,7 +161,7 @@ echo '<div class="container-fluid" id="cart">
                              $Stotal = $row['Quantity'] * $row['Price'];
                              if($i % 2 == 1)  $offset= 1;
                              if($i % 2 == 0)  $offset= 2;                                                
-                             if($j%2==0)
+                             if($j % 2 == 0)
                                  echo '<div class="row">'; 
                                  echo '                
                                       <div class="column" style="color:#0E345A;font-weight:800; width: 45%; display: table;">
@@ -177,10 +232,204 @@ echo '<div class="container-fluid" id="cart">
 	    }
         echo '</div>';
 	?>
+ -->
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
+
+
+<!-- extra -->
+<div class="row">
+<div class="main">
+
+   <!-- update book -->
+   <div class="container">
+    <div class="form-style" style="padding: 0px;" >
+      <table class="table" >
+        <tr>
+          <th>#</th>
+          <th colspan="2" style="text-align:center;">Product </th>
+          <th style="text-align: center;">Action</th>
+        </tr>
+        <tbody>
+          <form action="" method="post">
+<?php 
+
+  $count = 1;
+
+   if(isset($_SESSION['user']))
+   {   
+      if(isset($_GET['ID']))
+      {   
+        $product=$_GET['ID'];
+        $quantity=$_GET['Quantity'];
+        $query="SELECT * from cart where Customer='$customer' AND Product='$product'";
+        $result=mysqli_query($con,$query);
+        $row = mysqli_fetch_assoc($result);
+        if(mysqli_num_rows($result)==0)
+         { $query="INSERT INTO cart (Customer, Product, Quantity) VALUES ('$customer', '$product', '$quantity')"; 
+       $result=mysqli_query($con,$query);
+     }
+     else
+       { $new=$_GET['Quantity'];
+     $query="UPDATE cart SET Quantity=$new WHERE Customer='$customer' AND Product='$product'";
+     $result=mysqli_query($con,$query);
+       }
+  }
+       $query="SELECT PID,Title,Author,Publisher,Quantity,Price FROM cart INNER JOIN products ON cart.Product=products.PID WHERE Customer='$customer'";
+       $result=mysqli_query($con,$query); 
+       $total=0;
+       if(mysqli_num_rows($result)>0)
+        { 
+         while($row = mysqli_fetch_assoc($result))
+           { 
+         $Stotal = $row['Quantity'] * $row['Price'];
+         $productid=$row['PID'];
+
+                     
+         echo "<tr>
+            <td scope='row'><h3>".$count++."</h3></td>
+
+            <td><img src='img/books/".$row['PID'].".jpg' width='130px' height='200px'></td>    
+
+
+            <td><p>  
+            PRODUCT CODE  :  ".$row['PID']."   <hr> 
+            TITLE         :  ".$row['Title']." <hr> 
+            AUTHOR        :  ".$row['Author']." <hr> 
+            PUBLISHER     :  ".$row['Publisher']." <hr> 
+            Quantity      :  ".$row['Quantity']." <hr>
+            Price         :  Rs. ".$row['Price']." X ".$row['Quantity']." = Rs.".$Stotal." <hr>
+            </P></td>  
+
+
+            <td>
+
+            <button name='remove' type='submit' style='background-color:#f44336;' value='".$productid."'>Delete From Cart</button>
+            </td>
+
+            </tr>";
+
+           echo '</div>';                                 
+         $total=$total + $Stotal;                                                
+       }
+       }
+       } 
+
+?>
+
+<!-- 
+<?php
+
+
+           $count = 1;
+           $get_cart = "SELECT * FROM products WHERE PID IN (SELECT Product FROM cart)";
+           $cart_items = mysqli_query($con, $get_cart);
+           $total_price =0;    
+           while($bk = mysqli_fetch_array($cart_items))
+           {
+            $price_arr = array($bk['Price']);
+             //$total_price = array_sum($price_arr);
+            $single_price = $bk['Price'];
+            $total_price += $single_price;  
+            $bk_title = $bk['Title'];
+            $productid = $bk['PID'];
+
+            // echo "<tr>
+            // <td scope='row'><h3>".$count++."</h3></td>
+
+            // <td><img src='img/books/".$bk['PID'].".jpg' width='130px' height='200px'></td>    
+
+
+            // <td><p>  
+            // PRODUCT CODE  :  ".$bk['PID']."   <hr> 
+            // TITLE         :  ".$bk['Title']." <hr> 
+            // AUTHOR        :  ".$bk['Author']." <hr> 
+            // PUBLISHER     :  ".$bk['Publisher']." <hr> 
+            // Quantity      :  ".$row['Quantity']." <hr>
+            // Price         :  Rs. ".$bk['Price']." <hr>
+            // </P></td>  
+
+
+            // <td>
+
+            // <button name='remove' type='submit' style='background-color:#f44336;' value='".$productid."'>Delete From Cart</button>
+            // </td>
+
+            // </tr>";
+
+          }
+
+          ?> -->
+
+        </form>
+      </tbody>
+
+    </table>
+
+  </div>
+</div>
+
+
+  </div> <!-- main div -->
+    
+  <div class="side" style="flex: 20%;">
+    <h2> CART BILL</h2>
+    <p>  
+      <?php
+      echo"<hr><h3> TOTAL AMOUNT : Rs. ".$total." <h3><hr>";
+      ?>      
+      </P>
+  </div>  
+</div>
+
+
+</div>
+
+<?php 
+$ip = getIpAdd();
+if(isset($_POST['update_cart']))
+{
+  foreach($_POST['remove'] as $remove_id){
+    $delete_books = "delete from cart where product = '$remove_id' AND ip_add = '$ip'";
+    $run_delete = mysql_query($delete_books, $conn);
+    if($run_delete){
+      echo "<script>window.open('cart.php','_self');</script>";
+    }
+  }
+}
+?>
+
+    
+<div class="container-fluid" align="center" ><h3> <a  style="text-decoration:none " href="cart.php?place=true">checkout </a></h3>
+          </div>
+
+    <br> <br>
+    <div class="ShoppingOrder" align="center">
+          <div class=" navbar-right">
+            <button>
+              <a href="index.php" style="color:white;font-weight:800;">Continue Shopping</a> </button>
+          </div> <!-- &nbsp &nbsp &nbsp &nbsp -->
+          <div class="navbar-right">
+            <button class=>
+            <a href="cart.php?place=true" style="color:white;font-weight:800;margin-top:5px;">Place Order</a>
+            </button>
+          </div>
+    </div>
+
+                           
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
-<html>		
+</html>		

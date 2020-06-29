@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/w3css/3/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<?php include 'header.php' ?>
 
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
- 
-  <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
-
-<link href="css/my1.css" rel="stylesheet">
 
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
@@ -109,73 +99,6 @@ input[type=submit]:hover {
 </head>
 
 
-
-
-<body>
-<!-- Navigation -->
-
-<div class="navbar">
-  <a class="logo" href="index.php"><strong>QUINTET</strong></a>
-
-<div class="searchbox">
-<form role="search" method="POST" action="Result.php" style="border: 0px;">
-  <input type="text" name="keyword" placeholder="Search for a Book, Author of Category" style="width: 50%;">
-  </form>
-  </div> 
-
-    <div class="navbar-right">
-      <a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
-      <a href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
-      <a class="active" href="contact.php"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
-      <a onclick="openForm()"><i class="fa fa-fw fa-user"></i> Login</a>
-      <form class="form-popup" id="myForm" action="index.php" method="post" role="form">
-
-
-    <?php
-        if(!isset($_SESSION['user']))
-          {
-            echo'
-
-  
-  <div class="form-container">
-  <div class="imgcontainer">
-    <img src="img/img_avatar2.png" alt="Avatar" class="avatar" style="width:150px; height:auto;">
-  </div>
-
-  <h2> Login </h2>
-   <div class="form-group">
-      <label class="sr-only" for="username">Username</label>
-      <input type="text" name="login_username" class="form-control" placeholder="Username" required>
-  </div>
-  <div class="form-group">
-      <label class="sr-only" for="password">Password</label>
-      <input type="password" name="login_password" class="form-control"  placeholder="Password" required>
-  </div>
-  <div class="form-group">
-      <button type="submit" name="submit" value="login" class="btn btn-block"> Sign in </button>
-      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-
-  </div>
-  </div>                                      
-  ';
-        } 
-        else
-          {   echo' 
-                    <div>
-                    <ul style="list-style-type:none; margin: 10px; padding: 0px;">
-                    <li> <a href="#" class="btn btn-lg"> Hello ' .$_SESSION['user']. '.</a></li>
-                    <li> <a href="cart.php" class="btn btn-lg"> Cart </a> </li> 
-                    <li> <a href="destroy.php" class="btn btn-lg"> LogOut </a> </li>
-                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-                    </ul>
-                    </div>'; 
-          }
-?>
-</form>
-
-
-    </div>
-</div>
 
 
 
