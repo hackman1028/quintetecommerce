@@ -10,7 +10,7 @@
       <table class="table" >
         <tr>
           <th>#</th>
-          <th colspan="2" style="text-align:center;">Product </th>
+          <th colspan="2" style="text-align:center;">PRODUCTS </th>
 
         </tr>
         <tbody>
@@ -18,7 +18,7 @@
            <?php 
 
            $count = 1;
-           $get_cart = "SELECT * FROM products WHERE PID IN (SELECT Product FROM cart)";
+           $get_cart = "SELECT * FROM products";
            $cart_items = mysqli_query($con, $get_cart);
            $total_price =0;    
            while($bk = mysqli_fetch_array($cart_items))

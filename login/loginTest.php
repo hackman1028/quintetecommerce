@@ -1,5 +1,17 @@
 
-<?php include '../dbconnect.php'; ?>
+<?php include '../dbconnect.php'; 
+
+if(isset($_POST['submit'])){
+$username = $_POST['login_username'];
+$password = $_POST['login_password'];
+$usertype = $_POST['login_UserType'];
+$usertype2 = $_POST['signup_UserType'];
+
+echo $usertype;
+echo $usertype2;
+}
+
+?>
 
 
 
@@ -282,7 +294,7 @@ input {
 
 
 <p class="tip"><a class="logo" style="font-size: 25px; font-weight: bold;" href="../index.php"><strong>QUINTET</strong></a></p>
-<form class="modal-content" role="form" method="POST" action="../index.php">
+<form class="modal-content" role="form" method="POST" action="">
 <div class="cont">
   <div class="form sign-in">
     <h2>Welcome back,</h2>
@@ -330,8 +342,8 @@ input {
         <input type="password" name="register_password">
       </label>
       <label>
-    <select type="text" name="signUp_UserType">
-      <option name="Customer" value="Customer" >I am Customer</option>
+    <select type="text" name="signup_UserType">
+      <option name="customer" value="Customer" >I am Customer</option>
       <option name="Vendor" value="Vendor">I am Vendor</option>
     </select>
   </label>

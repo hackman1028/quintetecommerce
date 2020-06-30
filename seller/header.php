@@ -52,6 +52,24 @@ include '../dbconnect.php';
       }
   ?>
 
+
+
+
+
+<?php
+
+      if(isset($_POST['delete_permanent']))
+      {
+        $remove_id=$_POST['delete_permanent'];
+        $query="DELETE FROM products where PID='$remove_id'";
+        $result=mysqli_query($con,$query);
+      ?>
+        <script type="text/javascript">window.open('updatebook.php','_self');
+        </script>
+        <?php
+      }
+  ?>
+
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -102,7 +120,7 @@ include '../dbconnect.php';
 	<div class="side">
 		<div class="menu">
 			<li class="category-box">
-				<a href="seller.php" class="btn"><i class="fa fa-fw fa-home"></i> Home</a>	
+				<a href="addbook.php" class="btn"><i class="fa fa-fw fa-home"></i> Home</a>	
 			</li>
 
 			<li class="category-box">
@@ -114,15 +132,11 @@ include '../dbconnect.php';
 			</li>
 
 			<li class="category-box">
-				<a href="seller.php" class="btn"><i class="fa fa-fw fa-users"></i> Customer</a>
+				<a href="seller.php" class="btn"><i class="fa fa-fw fa-users"></i> Transaction</a>
 			</li>
 
 			<li class="category-box">
 				<a href="seller.php" class="btn"><i class="fa fa-fw fas fa-analytics"></i> Analytics</a>
-			</li>
-
-			<li class="category-box">
-				<a href="seller.php" class="btn"><i class="fa fa-fw fa-badge-percent"></i> Discounts</a>
 			</li>
 			
 		</div>

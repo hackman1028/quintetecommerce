@@ -25,59 +25,114 @@ if(isset($_POST['submit']))
   { 
         $username=$_POST['login_username'];
         $password=$_POST['login_password'];
-        $usertype=$_POST['UserType'];
-        
+        $usertype=$_POST['login_UserType'];
+       
+    if($_POST['login_UserType']=='Customer')
+    {   
         $query = "SELECT * from users where UserName ='$username'AND Password='$password'";
-        $result = mysqli_query($con,$query)or die(mysql_error($con));
+        mysqli_query($con,$query)or die(mysql_error($con));
+
+        $query = "SELECT * from users where Username='$username' AND UserType='$usertype'";
+        $result = mysqli_query($con,$query) or die (mysqli_error($con));
         if(mysqli_num_rows($result) > 0)
         {
              $row = mysqli_fetch_assoc($result);
              $_SESSION['user']=$row['UserName'];
-             echo'
-                <script type="text/javascript">alert("Successfully logged in!!!");</script>';
+             echo'<script type="text/javascript">alert("Successfully logged in as Customer!!!");</script>';
         }
         else
         {    print'
-              <script type="text/javascript">alert("Incorrect Username, Password or User Type!!");</script>
+              <script type="text/javascript">alert("Incorrect Username, Password or User Type C!!");</script>
                   ';
         }
+      }
+      else
+      {
+        $query = "SELECT * from vendor_user where UserName ='$username'AND Password='$password'";
+        mysqli_query($con,$query)or die(mysql_error($con));
+        $query = "SELECT * from vendor_user where Username='$username' AND UserType='$usertype'";
+        $result = mysqli_query($con,$query) or die (mysqli_error($con));
+        
+        if(mysqli_num_rows($result) > 0)
+        {
+             $row = mysqli_fetch_assoc($result);
+             $_SESSION['user']=$row['UserName'];
+             echo'<script type="text/javascript">alert("Successfully logged in as Vendor!!!");</script>';
+             echo "<script>window.open('seller/seller.php','_self')</script>";
+        }
+        else
+        {    print'
+              <script type="text/javascript">alert("Incorrect Username, Password or User Type V!!");</script>
+                  ';
+        }
+      }
   }
   else if($_POST['submit'] = "register")
   {
         $username=$_POST['register_username'];
         $password=$_POST['register_password'];
-        $usertype=$_POST['UserType'];
-        $query="SELECT * FROM users WHERE UserName = '$username'";
-        $result=mysqli_query($con,$query) or die($con);
+        $usertype=$_POST['signUp_UserType'];
+        
         // if(mysqli_num_rows($result)>0)
         // $db_username = 'UserName';
-          if($_POST['submit'] = "register")
-          {
-          while($row = mysqli_fetch_assoc($result))
-          {
-            $db_username = $row['UserName'];
-          }
-          }
+
+       if($_POST['signUp_UserType']=='Customer')
+    {  
+      $query="SELECT * FROM users WHERE UserName = '$username'";
+        $result=mysqli_query($con,$query) or die($con);
+
+      if(mysqli_num_rows($result) > 0)
+        {
+          $row = mysqli_fetch_assoc($result);
+          $db_username = $row['UserName'];
+        
+        
         if($username == $db_username)
-        {   
-               echo'
-               <script type="text/javascript">alert("username is taken");</script>';
-                echo "<script>window.open('login/login1.php','_self')</script>";
-
-
+          {   
+            echo'<script type="text/javascript">alert("Sorry, This Username is taken");</script>';
+            echo "<script>window.open('login/login1.php','_self')</script>";
+          }
         }
         else
         {
+
           $query ="INSERT INTO users (UserName, Password, UserType) VALUES ('$username','$password', '$usertype')";
           $result=mysqli_query($con,$query);
           echo'
                 <script type="text/javascript">
                  alert("Successfully Registered!!!");
                 </script>';
-          // echo "<script>window.open('../index.php','_self')</script>";
-
+          echo "<script>window.open('login/login1.php','_self')</script>";
         }
-      
+      }
+
+      else
+      {
+        $query="SELECT * FROM vendor_user WHERE UserName = '$username'";
+        $result=mysqli_query($con,$query) or die($con);
+        if(mysqli_num_rows($result) > 0)
+        {
+          $row = mysqli_fetch_assoc($result);
+          $db_username = $row['UserName'];
+        
+        
+        if($username == $db_username)
+          {   
+            echo'<script type="text/javascript">alert("Sorry, This Username is taken");</script>';
+            echo "<script>window.open('login/login1.php','_self')</script>";
+          }
+        }
+        else
+        {
+          $query ="INSERT INTO vendor_user (UserName, Password, UserType) VALUES ('$username','$password', '$usertype')";
+          $result=mysqli_query($con,$query);
+          echo'
+                <script type="text/javascript">
+                 alert("Successfully Registered!!!");
+                </script>';
+          echo "<script>window.open('login/login1.php','_self')</script>";
+        }
+      }
   }
 }
 

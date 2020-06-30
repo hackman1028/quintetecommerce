@@ -7,22 +7,6 @@ if(!isset($_SESSION['user']))
   $customer=$_SESSION['user'];
 
 
-function getIpAdd()
-{
-    if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
-    {
-      $ip=$_SERVER['HTTP_CLIENT_IP'];
-    }
-    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
-    {
-      $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
-    }
-    else
-    {
-      $ip=$_SERVER['REMOTE_ADDR'];
-    }
-    return $ip;
-}
 
 
 	if(isset($_GET['place']))
@@ -48,58 +32,6 @@ function getIpAdd()
 			}
 			?>
 
-<?php
-if(isset($_POST["add_to_cart"]))  
- {  
-      if(isset($_SESSION["shopping_cart"]))  
-      {  
-           $item_array_id = array_column($_SESSION["shopping_cart"], "item_id");  
-           if(!in_array($_GET["id"], $item_array_id))  
-           {  
-            $count = count($_SESSION["shopping_cart"]);  
-            $item_array = array(  
-             'item_id'      =>     $_GET["id"],  
-             'item_name'    =>     $_POST["hidden_name"],  
-             'item_price'   =>     $_POST["hidden_price"],  
-             'item_quantity'=>     $_POST["quantity"]  
-           );  
-            $_SESSION["shopping_cart"][$count] = $item_array;  
-           }  
-           else  
-           {  
-                echo '<script>alert("Item Already Added")</script>';  
-                echo '<script>window.location="index.php"</script>';  
-           }  
-      }  
-      else  
-      {  
-           $item_array = array(  
-                'item_id'               =>     $_GET["id"],  
-                'item_name'               =>     $_POST["hidden_name"],  
-                'item_price'          =>     $_POST["hidden_price"],  
-                'item_quantity'          =>     $_POST["quantity"]  
-           );  
-           $_SESSION["shopping_cart"][0] = $item_array;  
-      }  
- }  
- if(isset($_GET["action"]))  
- {  
-      if($_GET["action"] == "delete")  
-      {  
-           foreach($_SESSION["shopping_cart"] as $keys => $values)  
-           {  
-                if($values["item_id"] == $_GET["id"])  
-                {  
-                     unset($_SESSION["shopping_cart"][$keys]);  
-                     echo '<script>alert("Item Removed")</script>';  
-                     echo '<script>window.location="index.php"</script>';  
-                }  
-           }  
-      }  
- }  
-
-?>
-
 
 <?php
 
@@ -109,6 +41,7 @@ if(isset($_POST["add_to_cart"]))
         $query="DELETE FROM cart where Customer='$customer' AND Product='$remove_id'";
         $result=mysqli_query($con,$query);
       ?>
+        <script type="text/javascript">alert("Item Successfully removed from cart");</script>
         <script type="text/javascript">window.open('cart.php','_self');
         </script>
         <?php
@@ -243,7 +176,7 @@ echo '<div class="container-fluid" id="cart">
    <!-- update book -->
    <div class="container">
     <div class="form-style" style="padding: 0px;" >
-      <table class="table" >
+      <table class="table">
         <tr>
           <th>#</th>
           <th colspan="2" style="text-align:center;">Product </th>
@@ -378,43 +311,28 @@ echo '<div class="container-fluid" id="cart">
       echo"<hr><h3> TOTAL AMOUNT : Rs. ".$total." <h3><hr>";
       ?>      
       </P>
+
+      <div class="" align="center">
+          <div class=" ">
+            
+              <a href="bookstore.php" ><button>Continue Shopping</button></a> 
+          </div> <!-- &nbsp &nbsp &nbsp &nbsp --> 
+          <div class="">
+            <a href="cart.php?place=true"><button style="background-color: #4CAF50; ">Place Order</button></a>
+          </div>
+    </div>
+
   </div>  
 </div>
 
 
 </div>
 
-<?php 
-$ip = getIpAdd();
-if(isset($_POST['update_cart']))
-{
-  foreach($_POST['remove'] as $remove_id){
-    $delete_books = "delete from cart where product = '$remove_id' AND ip_add = '$ip'";
-    $run_delete = mysql_query($delete_books, $conn);
-    if($run_delete){
-      echo "<script>window.open('cart.php','_self');</script>";
-    }
-  }
-}
-?>
-
-    
-<div class="container-fluid" align="center" ><h3> <a  style="text-decoration:none " href="cart.php?place=true">checkout </a></h3>
+<!-- <div class="container-fluid" align="center" ><h3> <a  style="text-decoration:none " href="cart.php?place=true">CHECKOUT </a></h3> -->
           </div>
 
     <br> <br>
-    <div class="ShoppingOrder" align="center">
-          <div class=" navbar-right">
-            <button>
-              <a href="index.php" style="color:white;font-weight:800;">Continue Shopping</a> </button>
-          </div> <!-- &nbsp &nbsp &nbsp &nbsp -->
-          <div class="navbar-right">
-            <button class=>
-            <a href="cart.php?place=true" style="color:white;font-weight:800;margin-top:5px;">Place Order</a>
-            </button>
-          </div>
-    </div>
-
+    
                            
   
 

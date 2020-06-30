@@ -107,7 +107,7 @@
 			<!-- <option value="<?php echo $Category; ?>"><?php echo $Category; ?></option> -->
 
 <?php 
-		$options= array('New Book','Entrance Exam', 'Literature and Fiction', 'Academic and Professional', 'Biographies and Auto Biographies', 'Children and Teens', 'Regional Books', 'Business and Management', 'Health and Cooking');
+		$options= array('New Book','Entrance Exam', 'Literature and Fiction', 'Academic and Professional', 'Biographies and Auto Biographies', 'Children and Teens', 'Regional Books', 'Business and Management', 'Health and Cooking', 'Others');
 
 		foreach($options as $option)
 		{

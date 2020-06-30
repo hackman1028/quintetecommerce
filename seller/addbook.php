@@ -33,7 +33,7 @@
 		
 		<select type="text" name="Category" class="field-split align-right">
 			<?php 
-		$options= array('New Book', 'Entrance Exam', 'Literature and Fiction', 'Academic and Professional', 'Biographies and Auto Biographies', 'Children and Teens', 'Regional Books', 'Business and Management', 'Health and Cooking');
+		$options= array('New Book', 'Entrance Exam', 'Literature and Fiction', 'Academic and Professional', 'Biographies and Auto Biographies', 'Children and Teens', 'Regional Books', 'Business and Management', 'Health and Cooking' , 'Others');
 
 		foreach($options as $option)
 		{
@@ -102,9 +102,9 @@ if(isset($_POST['upload']))
 
 
 
-$sql="INSERT INTO products (PID, Title, Author, MRP, Price, Discount, Available, Publisher, Edition, Category, Description, BookImage) VALUES ('$PID', '$Title', '$Author', '$MRP', '$Price', '$Discount', '$Available', '$Publisher', '$Edition', '$Category', '$Description');";
+$sql="INSERT INTO products (PID, Title, Author, MRP, Price, Discount, Available, Publisher, Edition, Category, Description) VALUES ('$PID', '$Title', '$Author', '$MRP', '$Price', '$Discount', '$Available', '$Publisher', '$Edition', '$Category', '$Description');";
 
-$result = mysqli_query($con, $sql)or die(mysql_error($con));
+$result = mysqli_query($con, $sql) or die(mysqli_error($con));
 
 if(!$result)
 	{

@@ -10,7 +10,7 @@
       <table class="table" >
         <tr>
           <th>#</th>
-          <th colspan="2" style="text-align:center;">Product </th>
+          <th colspan="2" style="text-align:center;">PRODUCTS </th>
           <th>Action</th>
         </tr>
         <tbody>
@@ -18,10 +18,10 @@
            <?php 
 
            $count = 1;
-           $get_cart = "SELECT * FROM products WHERE PID IN (SELECT Product FROM cart)";
-           $cart_items = mysqli_query($con, $get_cart);
+           $sql = "SELECT * FROM products";
+           $results = mysqli_query($con, $sql);
            $total_price =0;    
-           while($bk = mysqli_fetch_array($cart_items))
+           while($bk = mysqli_fetch_array($results))
            {
             $price_arr = array($bk['Price']);
              //$total_price = array_sum($price_arr);
@@ -49,7 +49,7 @@
             <td>
             <button name='edit' type='submit' style='background-color:#4CAF50;' value='".$productid."'>Edit book</button>                      
             <br><br>
-            <button name='delete' type='submit' style='background-color:#f44336;' value='".$productid."'>Delete Book</button>
+            <button name='delete_permanent' type='submit' style='background-color:#f44336;' value='".$productid."'>Delete Book</button>
             </td>
 
             </tr>";
