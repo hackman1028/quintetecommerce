@@ -1,5 +1,7 @@
-<?php include '../seller/header.php'; ?>
+<?php include '../seller/header.php';
 
+  $vendor=$_SESSION['user'];
+?>
 
 
 
@@ -22,6 +24,7 @@
 
 		<!-- order book -->
     <div class="container">
+      
       <div class="form-style" style="padding: 0px; margin: 10px 5px;">
         <table class="table" >
           <tr>
@@ -37,13 +40,15 @@
             <form action="" method="post">
              <?php 
 
+             // $sql= "SELECT * FROM order_request WHERE"
              $count = 1;
-             $get_cart = "SELECT * FROM products WHERE PID IN (SELECT Product FROM cart)";
+             $get_cart = "SELECT * FROM products WHERE PID IN (SELECT Order_id FROM order_request) AND Vendor_ID = '$vendor'";
              $cart_items = mysqli_query($con, $get_cart);
              $total_price =0;    
-             while($bk = mysqli_fetch_array($cart_items)){
+             while($bk = mysqli_fetch_array($cart_items))
+             {
               $price_arr = array($bk['Price']);
-    //$total_price = array_sum($price_arr);
+             //$total_price = array_sum($price_arr);
               $single_price = $bk['Price'];
               $total_price += $single_price;  
               $bk_title = $bk['Title'];

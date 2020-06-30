@@ -97,7 +97,7 @@
             $path="img/books/" .$row['PID'].".jpg";
             
             $description="description.php?ID=".$row["PID"];
-            $target="cart.php?ID=".$row["PID"]."& Quantity=1";
+            $target="cart.php?ID=".$row["PID"]."& Quantity=1& Vid=".$row["Vendor_ID"];
             
             if($i%3==0)
             echo '<div class="row">';
