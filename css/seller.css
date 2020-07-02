@@ -1,0 +1,526 @@
+
+*{
+	font-family: 'Open Sans Condensed', arial, sans-serif;
+	list-style: none;
+	text-decoration: none;
+  box-sizing: border-box;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+body {
+  margin: 0;
+}
+
+.navbar {
+   /*width: 100%;*/
+  background-color: #0E345A;
+  
+  overflow: hidden;
+  /*position: sticky;
+  top: 0px;*/
+  padding-right: 20px;
+  padding-left: 20px;
+ 
+  
+}
+
+.navbar a {
+  float: left;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  text-align: center;
+  line-height: 25px;
+  border-radius: 0px;
+}
+
+.navbar a:hover {
+  background-color: #337ab7;
+  color: #fff;
+}
+
+.active {
+  background-color: #0e3451;
+}
+.navbar a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.navbar-right {
+  float: right;
+}
+
+.searchbox input[type=text] {
+  float: left;
+  padding: 8px;
+  margin-top: 4px;
+  margin-left: 40px;
+  margin-right: 20px;
+  border:none;
+  border-radius: 50px;
+  font-size: 16px;
+  width: 40%;
+}
+
+.middle{
+	position: relative;
+	top: 0;
+	left: 0;
+	transform: translate(0%, 0%);
+
+}
+.menu{
+	font-size: 22px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.item{
+	border-top: 1px solid #ebebeb;
+	overflow: hidden;
+}
+
+.get-start{
+
+	position: absolute;
+	top: 8%;
+	left: 30%;
+	transform: translate(-50%, -50%);
+}
+
+.category-menu{
+	position: absolute;
+	top: 48%;
+	left: 23%;
+	transform: translate(-50%, -50%);
+	font-size: 19px;
+	width: 240px;
+	border-radius: 0px;
+	overflow: hidden;
+}
+.category-box{
+	border-top: 1.5px solid #ebebeb;
+	overflow: hidden;
+}
+.category{
+	display:grid;
+  grid-template-columns: repeat(4,1fr);
+	/*margin:20px 0;*/
+/*	background-color: #fafafa;*/
+  color: #23527c;
+	position: relative;
+}
+.subCategory{
+  font-family: 'Open Sans Condensed', arial, sans-serif;
+  text-align: center;
+  font-size: 1.2rem;
+  /*margin: 0 4rem;*/
+  padding: 20px 40px;
+  cursor: pointer;
+  color: #23527c;
+  /*border-right: 2px solid #ccc;*/
+
+}
+.subCategory:hover{
+  /*border-bottom: 5px solid #3283a8;*/
+  background-color: rgba(0,0,0,.1);
+}
+
+
+.btn{
+  display:block;
+  padding:16px;
+  background-color: #fafafa;
+  color: #23527c;
+}
+/*.btn:before{
+	content: "";
+	
+	width: 8px;
+	height: 60px;
+	background: #3283a8;
+	left: 0;
+	top: 0;
+	transition: 0.3s;
+	opacity: 0;
+}*/
+
+.btn:hover{
+  height: 100%;
+  border-right:5px solid #3283a8;
+  opacity: 0.6;
+}
+
+.containerForm{
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+
+
+/*.category:before{
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 5px;
+	background: #3283a8;
+	left: 0;
+	bottom: 0;
+	transition: 0.3s;
+	opacity: 0;
+}
+
+.category:hover:before{
+	opacity: 1;
+}*/
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 15px;
+  font-size: 16px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #3283a8;
+  color: white;
+}
+
+
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Clear floats after rows */ 
+.row:after {
+  content: "";
+  display: flex;
+  clear: both;
+}
+
+.side{
+  flex: 20%;
+  background-color: #fafafa;
+  padding: 0px;
+  text-align: center;
+
+}
+
+.main{
+  flex: 80%;
+  background-color: white;
+  padding: 0px;
+
+}
+
+
+
+
+.container{
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 50%;
+  /*margin-bottom: 20px;*/
+
+  margin-bottom: 0px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+
+
+
+
+
+/*popup form*/
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 60px;
+  right: 50px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+  background: #0E345A;
+
+}
+
+/* Add styles to the form container */
+.form-container {
+  width: 1000px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+/*!pop of form*/
+
+
+.active {
+  background-color: #0e3451;
+}
+
+
+
+
+
+
+
+.container-fluid {
+/*  padding-right: 50px;
+  padding-left:  50px;*/
+  margin: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+button {
+  background-color: #008CBA; /* Blue */
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 100%;
+}
+
+
+
+
+ul{
+  padding:0;
+  margin:0;
+  list-style:none;
+}
+
+li{
+  display: block;
+  margin-bottom: 10px;
+  min-height: 35px;
+}
+
+  
+
+
+
+
+.form-style, .form-style2{
+  font-family: 'Open Sans Condensed', arial, sans;
+  width: 100%;
+  padding: 30px;
+  background: #FFFFFF;
+  margin: 20px auto;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+
+}
+
+
+.form-style h2, .form-style2 h2{
+  background: #4D4D4D;
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #fff;  /*#797979*/
+  font-size: 18px;
+  font-weight: 100;
+  padding: 20px;
+  margin: -30px -30px 30px -30px;
+}
+.form-style input[type="text"],
+.form-style input[type="password"],
+.form-style textarea,
+.form-style select,
+.form-style2 input[type="text"],
+.form-style2 input[type="password"],
+.form-style2 textarea,
+.form-style2 select 
+{
+  box-sizing: border-box;
+  outline: none;
+  display: block;
+  width: 95%;
+  padding: 7px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background: transparent;
+  margin-bottom: 10px;
+  font: 16px Arial, Helvetica, sans-serif;
+  height: 45px;
+}
+.form-style textarea, .form-style2 textarea{
+  resize:none;
+  overflow: hidden;
+}
+
+.form-style input[type="button"], 
+.form-style input[type="submit"],
+.form-style2 input[type="button"],
+.form-style2 input[type="submit"]{
+  box-shadow: inset 0px 1px 0px 0px #45D6D6;
+  background-color: #2CBBBB;
+  border: 1px solid #27A0A0;
+  display: inline-block;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 14px;
+  padding: 8px 18px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.form-style input[type="button"]:hover, 
+.form-style input[type="submit"]:hover {
+  background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+  background-color:#34CACA;
+}
+
+
+.form-style ul li input.align-left,
+.form-style2 ul li input.align-left{
+  float:left;
+}
+.form-style ul li input.align-right,
+.form-style2 ul li input.align-right{
+  float:right;
+}
+
+.form-style select.align-right{
+  float:right;
+}
+
+
+.form-style ul li .field-split,
+.form-style2 ul li .field-split{
+  width: 48%;
+}
+.form-style ul li .field-full,
+.form-style2 ul li .field-full{
+  width: 100%;
+}
+
+
+
+
+.row2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 16px;
+}
+
+.col-50 {
+  flex: 50%;
+}
+
+
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #337ab7;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
