@@ -1,37 +1,6 @@
-<!DOCTYPE html>
-<html>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/w3css/3/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
- 
-  <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
-
-<link href="css/my.css" rel="stylesheet">
+<?php include 'header.php' ?>
 
 
-
-<body>
-<!-- Navigation -->
-
-<div class="navbar topnav">
-	<a class="logo" href="#"><strong>QUINTET</strong></a>
-
-	<input type="text" placeholder="Search.." style="width: 50%;"> 
-		<div class="navbar-right">
-		  <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
-		  <a href="bookstore.php"><i class="fa fa-fw fa-book"></i> Bookstore</a>
-		  <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
-		  <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
-		</div>
-</div>
- 	<!-- 	<div id="searchbox1" >
-              <form class="navbar-form navbar-left" role="search" method="POST" action="Result.php">
-                  <input type="text" class="form-control" name="keyword" style="width:250%; margin-left: 20%" placeholder="Search for a Book, Author or Category">
-              </form>
-          </div> -->
 
 <!-- Slide Show -->
 <section>
@@ -43,166 +12,307 @@
   style="width:100%">
 </section>
 
-<!-- Book section -->
-<div class="header">
-  <h2>RECENTLY ADDED</h2>
-</div>
-
-<!-- Book Description -->
-<div class="row">
-	<div class="column">
-		<div class="card">
-			<img src="img/books/book1.jpg" alt="1" style="width:100%">
-		</div>
-			<div class="container">
-				<h2> 1 book </h2>
-				<p class="title">Summer Love</p>
-				<p> Rs. 200 </p>
-				<p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-			</div>		
-	</div>
-
-	<div class="column">
-		<div class="card">
-			<img src="img/books/book2.jpg" alt="2" style="width:100%">
-		</div>
-			<div class="container">
-				<h2> 2 book </h2>
-				<p class="title">Summer Love</p>
-				<p> Rs. 200 </p>
-				<p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-			</div>		
-	</div>
-
-	<div class="column">
-		<div class="card">
-			<img src="img/books/book3.jpg" alt="3" style="width:100%">
-		</div>
-			<div class="container">
-				<h2> 3 book </h2>
-				<p class="title">Summer Love</p>
-				<p> Rs. 200 </p>
-				<p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-			</div>		
-	</div>
-
-	<div class="column">
-		<div class="card">
-			<img src="img/books/book4.jpg" alt="4" style="width:100%">
-		</div>
-			<div class="container">
-				<h2> 4 book </h2>
-				<p class="title">Summer Love</p>
-				<p> Rs. 200 </p>
-				<p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-			</div>		
-	</div>
-
-	<div class="column">
-		<div class="card">
-			<img src="img/books/book5.jpg" alt="5" style="width:100%">
-		</div>
-			<div class="container">
-				<h2> 5 book </h2>
-				<p class="title">Summer Love</p>
-				<p> Rs. 200 </p>
-				<p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-			</div>		
-	</div>
-
-	<div class="column">
-		<div class="card">
-			<img src="img/books/book6.jpg" alt="6" style="width:100%">
-		</div>
-			<div class="container">
-				<h2> 6 book </h2>
-				<p class="title">Summer Love</p>
-				<p> Rs. 200 </p>
-				<p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-			</div>		
-	</div>
-</div>
-
 
 <!-- Book section -->
-<div class="header">
-  <h2>BEST SELLER</h2>
+
+<?php
+
+$_GET['value']="New Book";
+
+if(isset($_GET['value']))
+{  
+ $_SESSION['category']=$_GET['value'];
+}
+$category=$_SESSION['category'];
+
+$query = "SELECT * FROM products WHERE Category='$category'";
+$result = mysqli_query ($con,$query)or die(mysqli_error($con));
+
+$i=0;
+
+echo '
+<div class="header" id="heading">
+<h2 style="text-transform:uppercase;"> '. $category .' STORE </h2>
+</div>';
+
+echo '
+<div class="container-fluid">
+
+<div class="row" style="overflow-x: auto; width: 100%; flex-wrap: nowrap; -webkit-appearance: none;">';
+
+
+if(mysqli_num_rows($result) > 0)
+{
+  while($row = mysqli_fetch_assoc($result))
+  {
+   $path="img/books/" .$row['PID'].".jpg";
+   $description="description.php?ID=".$row["PID"];
+
+   echo'
+   <div class="column">
+   <a href="'.$description.'">
+   <div class="card">
+   <img src="'.$path.'" style="width:100%">
+   </div>
+   <div class="container">
+   <hr>
+   ' . $row["Title"]. '<br>
+   <h3><strong>Rs. ' . $row["Price"]. '</strong></h3>
+
+
+   </div>
+
+   </a>
+
+
+   </div>';
+ }
+}
+
+echo '
 </div>
+</div>';
+?>
 
-<!-- Book Description -->
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <img src="img/books/book1.jpg" alt="1" style="width:100%">
-    </div>
-      <div class="container">
-        <h2> 1 book </h2>
-        <p class="title">Summer Love</p>
-        <p> Rs. 200 </p>
-        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
-  </div>
+<?php
 
-  <div class="column">
-    <div class="card">
-      <img src="img/books/book2.jpg" alt="2" style="width:100%">
-    </div>
-      <div class="container">
-        <h2> 2 book </h2>
-        <p class="title">Summer Love</p>
-        <p> Rs. 200 </p>
-        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
-  </div>
+$_GET['value']="Literature and Fiction";
 
-  <div class="column">
-    <div class="card">
-      <img src="img/books/book3.jpg" alt="3" style="width:100%">
-    </div>
-      <div class="container">
-        <h2> 3 book </h2>
-        <p class="title">Summer Love</p>
-        <p> Rs. 200 </p>
-        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
-  </div>
+if(isset($_GET['value']))
+{  
+ $_SESSION['category']=$_GET['value'];
+}
+$category=$_SESSION['category'];
 
-  <div class="column">
-    <div class="card">
-      <img src="img/books/book4.jpg" alt="4" style="width:100%">
-    </div>
-      <div class="container">
-        <h2> 4 book </h2>
-        <p class="title">Summer Love</p>
-        <p> Rs. 200 </p>
-        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
-  </div>
+$query = "SELECT * FROM products WHERE Category='$category'";
+$result = mysqli_query ($con,$query)or die(mysqli_error($con));
 
-  <div class="column">
-    <div class="card">
-      <img src="img/books/book5.jpg" alt="5" style="width:100%">
-    </div>
-      <div class="container">
-        <h2> 5 book </h2>
-        <p class="title">Summer Love</p>
-        <p> Rs. 200 </p>
-        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
-  </div>
+$i=0;
 
-  <div class="column">
-    <div class="card">
-      <img src="img/books/book6.jpg" alt="6" style="width:100%">
-    </div>
-      <div class="container">
-        <h2> 6 book </h2>
-        <p class="title">Summer Love</p>
-        <p> Rs. 200 </p>
-        <p><button class="button"><i class="fa fa-fw fa-cart-plus"></i>ADD TO CART</button></p>
-      </div>    
-  </div>
+echo '
+<div class="header" id="heading">
+<h2 style="text-transform:uppercase;"> '. $category .' STORE </h2>
+</div>';
+
+echo '
+<div class="container-fluid">
+
+<div class="row" style="overflow-x: auto; width: 100%; flex-wrap: nowrap; -webkit-appearance: none;">';
+
+
+if(mysqli_num_rows($result) > 0)
+{
+  while($row = mysqli_fetch_assoc($result))
+  {
+   $path="img/books/" .$row['PID'].".jpg";
+   $description="description.php?ID=".$row["PID"];
+
+   echo'
+   <div class="column">
+   <a href="'.$description.'">
+   <div class="card">
+   <img src="'.$path.'" style="width:100%">
+   </div>
+   <div class="container">
+   <hr>
+   ' . $row["Title"]. '<br>
+   <h3><strong>Rs. ' . $row["Price"]. '</strong></h3>
+
+
+   </div>
+
+   </a>
+
+
+   </div>';
+ }
+}
+
+echo '
 </div>
+</div>';
+?>
+
+<?php
+
+$_GET['value']="Children and Teens";
+
+if(isset($_GET['value']))
+{  
+ $_SESSION['category']=$_GET['value'];
+}
+$category=$_SESSION['category'];
+
+$query = "SELECT * FROM products WHERE Category='$category'";
+$result = mysqli_query ($con,$query)or die(mysqli_error($con));
+
+$i=0;
+
+echo '
+<div class="header" id="heading">
+<h2 style="text-transform:uppercase;"> '. $category .' STORE </h2>
+</div>';
+
+echo '
+<div class="container-fluid">
+
+<div class="row" style="overflow-x: auto; width: 100%; flex-wrap: nowrap; -webkit-appearance: none;">';
+
+
+if(mysqli_num_rows($result) > 0)
+{
+  while($row = mysqli_fetch_assoc($result))
+  {
+   $path="img/books/" .$row['PID'].".jpg";
+   $description="description.php?ID=".$row["PID"];
+
+   echo'
+   <div class="column">
+   <a href="'.$description.'">
+   <div class="card">
+   <img src="'.$path.'" style="width:100%">
+   </div>
+   <div class="container">
+   <hr>
+   ' . $row["Title"]. '<br>
+   <h3><strong>Rs. ' . $row["Price"]. '</strong></h3>
+
+
+   </div>
+
+   </a>
+
+
+   </div>';
+ }
+}
+
+echo '
+</div>
+</div>';
+?>
+
+<?php
+
+$_GET['value']="Regional Books";
+
+if(isset($_GET['value']))
+{  
+ $_SESSION['category']=$_GET['value'];
+}
+$category=$_SESSION['category'];
+
+$query = "SELECT * FROM products WHERE Category='$category'";
+$result = mysqli_query ($con,$query)or die(mysqli_error($con));
+
+$i=0;
+
+echo '
+<div class="header" id="heading">
+<h2 style="text-transform:uppercase;"> '. $category .' STORE </h2>
+</div>';
+
+echo '
+<div class="container-fluid">
+
+<div class="row" style="overflow-x: auto; width: 100%; flex-wrap: nowrap; -webkit-appearance: none;">';
+
+
+if(mysqli_num_rows($result) > 0)
+{
+  while($row = mysqli_fetch_assoc($result))
+  {
+   $path="img/books/" .$row['PID'].".jpg";
+   $description="description.php?ID=".$row["PID"];
+
+   echo'
+   <div class="column">
+   <a href="'.$description.'">
+   <div class="card">
+   <img src="'.$path.'" style="width:100%">
+   </div>
+   <div class="container">
+   <hr>
+   ' . $row["Title"]. '<br>
+   <h3><strong>Rs. ' . $row["Price"]. '</strong></h3>
+
+
+   </div>
+
+   </a>
+
+
+   </div>';
+ }
+}
+
+echo '
+</div>
+</div>';
+?>
+
+<?php
+
+$_GET['value']="Health and Cooking";
+
+if(isset($_GET['value']))
+{  
+ $_SESSION['category']=$_GET['value'];
+}
+$category=$_SESSION['category'];
+
+$query = "SELECT * FROM products WHERE Category='$category'";
+$result = mysqli_query ($con,$query)or die(mysqli_error($con));
+
+$i=0;
+
+echo '
+<div class="header" id="heading">
+<h2 style="text-transform:uppercase;"> '. $category .' STORE </h2>
+</div>';
+
+echo '
+<div class="container-fluid">
+
+<div class="row" style="overflow-x: auto; width: 100%; flex-wrap: nowrap; -webkit-appearance: none;">';
+
+
+if(mysqli_num_rows($result) > 0)
+{
+  while($row = mysqli_fetch_assoc($result))
+  {
+   $path="img/books/" .$row['PID'].".jpg";
+   $description="description.php?ID=".$row["PID"];
+
+   echo'
+   <div class="column">
+   <a href="'.$description.'">
+   <div class="card">
+   <img src="'.$path.'" style="width:100%">
+   </div>
+   <div class="container">
+   <hr>
+   ' . $row["Title"]. '<br>
+   <h3><strong>Rs. ' . $row["Price"]. '</strong></h3>
+
+
+   </div>
+
+   </a>
+
+
+   </div>';
+ }
+}
+
+echo '
+</div>
+</div>';
+?>
+
+
+
+
 
 
 
