@@ -1,19 +1,13 @@
-
-<?php echo $date=date("Y/m/d"); ?>
 <?php
 include "header.php";
-if(!isset($_SESSION['user']))
-  header("location: index.php?Message=Login to Continue");
 
-  $customer=$_SESSION['user'];
-  
-
+$customer = $_SESSION['user'];
 
 
   if(isset($_GET['place']))
       {
 
-        $ordersql = "INSERT INTO order_request (Order_id, Purchased_date, Customer_id, Vendor_id) SELECT Product, Purchased_date, Customer, Vendor_ID FROM cart WHERE Customer='$customer'";
+        $ordersql = "INSERT INTO order_request (Order_id, Purchased_date, Customer_id, Vendor_id, Quantity) SELECT Product, Purchased_date, Customer, Vendor_ID, Quantity FROM cart WHERE Customer='$customer'";
         $resultID=mysqli_query($con, $ordersql);
 
       $query="DELETE FROM cart where Customer='$customer'";
@@ -69,7 +63,7 @@ if(!isset($_SESSION['user']))
 <div class="main">
 
    <!-- update book -->
-   <div class="container">
+   <div class="container1">
     <div class="form-style" style="padding: 0px;" >
       <table class="table">
         <tr>
@@ -89,12 +83,8 @@ if(!isset($_SESSION['user']))
     {   
       $product=$_GET['ID'];
       $quantity=$_GET['Quantity'];
-
-
-     
-        echo $Purchased_date=date("Y/m/d");
-        $vendorId= $_GET['Vid'];
-        echo $vendorId;
+      $Purchased_date=date("Y/m/d");
+      $vendorId= $_GET['Vid'];
 
       $query="SELECT * from cart where Customer='$customer' AND Product='$product'";
       $result=mysqli_query($con,$query);
@@ -110,8 +100,7 @@ if(!isset($_SESSION['user']))
    $result=mysqli_query($con,$query);
  }
 }
-$query="SELECT PID,Title,Author,Publisher,Quantity,Price FROM cart INNER JOIN products ON cart.Product=products.PID 
-WHERE Customer='$customer'";
+$query="SELECT PID,Title,Author,Publisher,Quantity,Price FROM cart INNER JOIN products ON cart.Product=products.PID WHERE Customer='$customer'";
 $result=mysqli_query($con,$query); 
 $total=0;
 if(mysqli_num_rows($result)>0)
@@ -129,7 +118,7 @@ if(mysqli_num_rows($result)>0)
      <td><img src='img/books/".$row['PID'].".jpg' width='130px' height='200px'></td>    
 
 
-     <td><p>  
+     <td style='width:65%;'><p>  
      PRODUCT CODE  :  ".$row['PID']."   <hr> 
      TITLE         :  ".$row['Title']." <hr> 
      AUTHOR        :  ".$row['Author']." <hr> 
@@ -168,32 +157,17 @@ if(mysqli_num_rows($result)>0)
     
   <div class="side" style="flex: 20%;">
     <h2> CART BILL</h2>
-    <p>  
       <?php
       echo"<hr><h3> TOTAL AMOUNT : Rs. ".$total." <h3><hr>";
-      ?>      
-      </P>
+      ?>  
 
       <div class="" align="center">
-          <div class=" ">
-            
-              <a href="bookstore.php" ><button>Continue Shopping</button></a> 
-          </div> <!-- &nbsp &nbsp &nbsp &nbsp --> 
-          <div class="">
+            <a href="bookstore.php" ><button>Continue Shopping</button></a> 
             <a href="cart.php?place=true"><button style="background-color: #4CAF50;" value='".$productid."'>Place Order</button></a>
-          </div>
+      </div>
     </div>
-
   </div>  
-</div>
 
-
-</div>
-
-<!-- <div class="container-fluid" align="center" ><h3> <a  style="text-decoration:none " href="cart.php?place=true">CHECKOUT </a></h3> -->
-          </div>
-
-    <br> <br>
     
 </body>
 </html>   

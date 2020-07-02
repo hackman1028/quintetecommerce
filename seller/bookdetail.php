@@ -18,7 +18,7 @@
            <?php 
 
            $count = 1;
-           $get_cart = "SELECT * FROM products";
+           $get_cart = "SELECT * FROM products WHERE Vendor_ID='$vendor'";
            $cart_items = mysqli_query($con, $get_cart);
            $total_price =0;    
            while($bk = mysqli_fetch_array($cart_items))

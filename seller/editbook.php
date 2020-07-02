@@ -59,6 +59,8 @@
     else
     {
      echo '<script type="text/javascript">alert("data uploaded successfully")</script>';
+     echo '<script type="text/javascript">window.open("update.php","_self");
+        </script>';
     }
 	}
 	

@@ -181,7 +181,7 @@ if(isset($_POST['submit']))
         <button class="dropbtn" style="text-transform:uppercase;"> Hi, '.$_SESSION['user']. '&nbsp <i class="fa fa-caret-down"></i></button>
           <div class="dropdown-content">
               <a href="destroy.php" class="btn btn-lg"> Logout </a>
-              <a href="seller/seller.php">Vender </a>
+
           </div>
       </div>
       <a href="cart.php" class="btn btn-lg"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart </a>  ';
@@ -189,7 +189,10 @@ if(isset($_POST['submit']))
      ?>
 
      <!--  <a onclick="openForm()"><i class="fa fa-fw fa-user"></i> Login</a>
-      <?php include 'login/login1.php' ?> -->
+      <?php include 'login/login1.php' ?> 
+
+                  <a href="seller/seller.php">Vender </a>
+-->
 
 </div>
 </div>  <!-- navbar -->

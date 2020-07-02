@@ -122,11 +122,13 @@ body {
   /*margin: 0 4rem;*/
   padding: 20px 40px;
   cursor: pointer;
+  color: #23527c;
   /*border-right: 2px solid #ccc;*/
 
 }
 .subCategory:hover{
-  border-bottom: 5px solid #3283a8;
+  /*border-bottom: 5px solid #3283a8;*/
+  background-color: rgba(0,0,0,.1);
 }
 
 
@@ -134,7 +136,6 @@ body {
   display:block;
   padding:16px;
   background-color: #fafafa;
-
   color: #23527c;
 }
 /*.btn:before{

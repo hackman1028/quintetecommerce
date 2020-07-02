@@ -189,69 +189,75 @@ echo '<div class="container-fluid" id="cart">
         </tr>
         <tbody>
           <form action="" method="post">
-        <?php 
+<?php 
 
-        $count = 1;
-        if(isset($_SESSION['user']))
-        {   
-          if(isset($_GET['ID']))
-          {   
-            $product=$_GET['ID'];
-            $quantity=$_GET['Quantity'];
-            $query="SELECT * from cart where Customer='$customer' AND Product='$product'";
-            $result=mysqli_query($con,$query);
-            $row = mysqli_fetch_assoc($result);
-            if(mysqli_num_rows($result)==0)
-             { $query="INSERT INTO cart (Customer, Product, Quantity) VALUES ('$customer', '$product', '$quantity')"; 
-           $result=mysqli_query($con,$query);
-         }
-         else
-           { $new=$_GET['Quantity'];
-         $query="UPDATE cart SET Quantity=$new WHERE Customer='$customer' AND Product='$product'";
-         $result=mysqli_query($con,$query);
+  $count = 1;
+
+   if(isset($_SESSION['user']))
+   {   
+      if(isset($_GET['ID']))
+      {   
+        $product=$_GET['ID'];
+        $quantity=$_GET['Quantity'];
+        echo $Purchased_date=date("Y/m/d");
+        $vendorId= $_GET['Vid'];
+        echo $vendorId;
+
+        $query="SELECT * from cart WHERE Customer='$customer' AND Product='$product'";
+        $result=mysqli_query($con,$query);
+        $row = mysqli_fetch_assoc($result);
+
+        if(mysqli_num_rows($result)==0)
+         { $query="INSERT INTO `cart`(`Customer`, `Product`, `Quantity`, `Order_ID`, `Purchased_date`, `Vendor_ID`) VALUES ('$customer','$product','$quantity','$product','$Purchased_date','$vendorId')"; 
+       $result=mysqli_query($con,$query);
+          }
+        }
+     else
+       { $new=$_GET['Quantity'];
+     $query="UPDATE cart SET Quantity=$new WHERE Customer='$customer' AND Product='$product'";
+     $result=mysqli_query($con,$query);
        }
-     }
-     $query="SELECT PID,Title,Author,Edition,Quantity,Price FROM cart INNER JOIN products ON cart.Product=products.PID 
-     WHERE Customer='$customer'";
-     $result=mysqli_query($con,$query); 
-     $total=0;
-     if(mysqli_num_rows($result)>0)
-     {  
-       while($row = mysqli_fetch_assoc($result))
-       { 
+  }
+       $query="SELECT PID,Title,Author,Publisher,Quantity,Price FROM cart INNER JOIN products ON cart.Product=products.PID WHERE Customer='$customer'";
+       $result=mysqli_query($con,$query); 
+       $total=0;
+       if(mysqli_num_rows($result)>0)
+        { 
+         while($row = mysqli_fetch_assoc($result))
+           { 
          $Stotal = $row['Quantity'] * $row['Price'];
          $productid=$row['PID'];
 
-         
+                     
          echo "<tr>
-         <td scope='row'><h3>".$count++."</h3></td>
+            <td scope='row'><h3>".$count++."</h3></td>
 
-         <td><img src='img/books/".$row['PID'].".jpg' width='130px' height='200px'></td>    
-
-
-         <td><p>  
-         PRODUCT CODE  :  ".$row['PID']."   <hr> 
-         TITLE         :  ".$row['Title']." <hr> 
-         AUTHOR        :  ".$row['Author']." <hr> 
-         PUBLISHER     :  ".$row['Publisher']." <hr> 
-         Quantity      :  ".$row['Quantity']." <hr>
-         Price         :  Rs. ".$row['Price']." X ".$row['Quantity']." = Rs.".$Stotal." <hr>
-         </P></td>  
+            <td><img src='img/books/".$row['PID'].".jpg' width='130px' height='200px'></td>    
 
 
-         <td>
+            <td><p>  
+            PRODUCT CODE  :  ".$row['PID']."   <hr> 
+            TITLE         :  ".$row['Title']." <hr> 
+            AUTHOR        :  ".$row['Author']." <hr> 
+            PUBLISHER     :  ".$row['Publisher']." <hr> 
+            Quantity      :  ".$row['Quantity']." <hr>
+            Price         :  Rs. ".$row['Price']." X ".$row['Quantity']." = Rs.".$Stotal." <hr>
+            </P></td>  
 
-         <button name='remove' type='submit' style='background-color:#f44336;' value='".$productid."'>Delete From Cart</button>
-         </td>
 
-         </tr>";
+            <td>
 
-         echo '</div>';                                 
+            <button name='remove' type='submit' style='background-color:#f44336;' value='".$productid."'>Delete From Cart</button>
+            </td>
+
+            </tr>";
+
+           echo '</div>';                                 
          $total=$total + $Stotal;                                                
        }
-     } 
+       } 
 
-     ?>
+?>
 
 <!-- 
 <?php

@@ -102,7 +102,7 @@ if(isset($_POST['upload']))
 
 
 
-$sql="INSERT INTO products (PID, Title, Author, MRP, Price, Discount, Available, Publisher, Edition, Category, Description) VALUES ('$PID', '$Title', '$Author', '$MRP', '$Price', '$Discount', '$Available', '$Publisher', '$Edition', '$Category', '$Description');";
+$sql="INSERT INTO products (PID, Title, Author, MRP, Price, Discount, Available, Publisher, Edition, Category, Description, Vendor_ID) VALUES ('$PID', '$Title', '$Author', '$MRP', '$Price', '$Discount', '$Available', '$Publisher', '$Edition', '$Category', '$Description', '$vendor')";
 
 $result = mysqli_query($con, $sql) or die(mysqli_error($con));
 

@@ -37,12 +37,9 @@ input[type=submit]:hover {
 
 
 
-
-
-
 .column1 {
   float: left;
-  width: 33.3%;
+  width: 25%;
   margin-bottom: 16px;
   padding: 0 8px;
 }
@@ -60,7 +57,7 @@ input[type=submit]:hover {
 }
 
 .container1 {
-  padding: 0 16px;
+  padding: 0 300px;
 }
 
 .container1::after, .row::after {
@@ -68,6 +65,17 @@ input[type=submit]:hover {
   clear: both;
   display: table;
 }
+
+.container3 {
+  padding: 0 16px;
+}
+
+.container3::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 
 .title {
   color: grey;
@@ -100,9 +108,9 @@ input[type=submit]:hover {
 
 
 
+<div class="container1">
 
-
-<h3>Contact Form</h3>
+<h2>Contact Form</h2>
 
 <div class="container2">
   <form action="contact.php">
@@ -126,17 +134,18 @@ input[type=submit]:hover {
     <input type="submit" value="Submit">
   </form>
 </div>
+</div>
 
 
 
 
-
+<div class="container2">
 <h2 style="text-align:center">Our Team</h2>
 <div class="row">
   <div class="column1">
     <div class="card1">
       <img src="img/author/trishant.jpg" alt="Trishant" style="width:100%">
-      <div class="container1">
+      <div class="container3">
         <h2>Jane Doe</h2>
         <p class="title">CEO & Founder</p>
         <p>trishantsthapit10@gmail.com</p>
@@ -148,7 +157,7 @@ input[type=submit]:hover {
   <div class="column1">
     <div class="card1">
       <img src="img/author/pratima.jpg" alt="Pratima" style="width:100%">
-      <div class="container1">
+      <div class="container3">
         <h2>Pratima K.C</h2>
         <p class="title">Art Director</p>
         <p>kcpratima44@gmail.com</p>
@@ -160,15 +169,28 @@ input[type=submit]:hover {
   <div class="column1">
     <div class="card1">
       <img src="img/author/biplav.jpg" alt="Biplav" style="width:100%">
-      <div class="container1">
+      <div class="container3">
         <h2>Biplav Sainju</h2>
         <p class="title">Designer</p>
-        <p>sainjubiplav@gmail..com</p>
+        <p>sainjubiplav@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column1">
+    <div class="card1">
+      <img src="img/author/anmol.jpg" alt="Anmol" style="width:100%">
+      <div class="container3">
+        <h2>Anmol Dhakal</h2>
+        <p class="title">Designer</p>
+        <p>anmoldhakal@gmail.com</p>
         <p><button class="button">Contact</button></p>
       </div>
     </div>
   </div>
 </div>
 
+</div>
 </body>
 </html>

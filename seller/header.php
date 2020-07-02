@@ -6,7 +6,7 @@ session_start();
 if(!isset($_SESSION['user']))
 	header("location: index.php?Message=Login to Continue");
 include '../dbconnect.php';
-	$customer=$_SESSION['user'];
+$vendor=$_SESSION['user'];
 ?>
 
 
@@ -106,12 +106,12 @@ include '../dbconnect.php';
         <button class="dropbtn" style="text-transform:uppercase;"> Hello ' .$_SESSION['user']. '&nbsp <i class="fa fa-caret-down"></i></button>
           <div class="dropdown-content">
               <a href="../destroy.php" class="btn btn-lg"> Logout </a>
-              <a href="../index.php">Customer </a>
+              
           </div>
       </div>';
      }
      ?>
-
+<!-- <a href="../index.php">Customer </a> -->
     </div>
 </div>
 
@@ -128,15 +128,15 @@ include '../dbconnect.php';
 			</li>
 
 			<li class="category-box">
-				<a href="seller.php" class="btn"><i class="fa fa-fw fa-product-hunt"></i> Products</a>
+				<a href="bookdetail.php" class="btn"><i class="fa fa-fw fa-product-hunt"></i> Products</a>
 			</li>
 
 			<li class="category-box">
-				<a href="seller.php" class="btn"><i class="fa fa-fw fa-users"></i> Transaction</a>
+				<a href="soldbook.php" class="btn"><i class="fa fa-fw fa-users"></i> Transaction</a>
 			</li>
 
 			<li class="category-box">
-				<a href="seller.php" class="btn"><i class="fa fa-fw fas fa-analytics"></i> Analytics</a>
+				<a href="analytics.php" class="btn"><i class="fa fa-area-chart"></i> Analytics</a>
 			</li>
 			
 		</div>
